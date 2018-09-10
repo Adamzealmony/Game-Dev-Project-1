@@ -36,7 +36,7 @@ import flixel.math.FlxPoint;
 		loadGraphic("assets/images/Walk.png", true, 100, 100);
 		 
 	
-		animation.add("Walk", [1, 2, 1, 3], 5, true);
+		animation.add("Walk", [1, 2, 1, 3], 5, false);
 	
 		 //slow down the player when it is not being moved 
 		 drag.x = drag.y = 2000;
