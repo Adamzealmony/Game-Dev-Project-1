@@ -31,9 +31,13 @@ import flixel.math.FlxPoint;
 		 
      public function new(?X:Float=0, ?Y:Float=0)
      {
-         super(X, Y);
-		 //the placeholder of player
-		 makeGraphic(16, 16, FlxColor.RED);
+        super(X, Y);
+		
+		loadGraphic("assets/images/Walk.png", true, 100, 100);
+		 
+	
+		animation.add("Walk", [1, 2, 1, 3], 5, true);
+	
 		 //slow down the player when it is not being moved 
 		 drag.x = drag.y = 2000;
 	  
@@ -54,6 +58,7 @@ import flixel.math.FlxPoint;
 		 //if player is acturally moving 
 		 if (_up || _down || _left || _right)
 		 {//creat a variable to hold the angle of our player
+		 animation.play("Walk");
 		 var mA:Float = 0;
 		 if(_up)
 		 {
