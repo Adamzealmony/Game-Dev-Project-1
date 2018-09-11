@@ -39,6 +39,7 @@ class MenuState extends FlxState
 	function clickPlay():Void
 	{
 		// switch to play scene!
+		//code taken from class.
 		FlxG.switchState(new PlayState());
 	}
 	function clickInfo():Void{
