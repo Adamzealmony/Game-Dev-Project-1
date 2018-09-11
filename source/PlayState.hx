@@ -39,14 +39,16 @@ class PlayState extends FlxState
 			FlxG.switchState(new GameOverState());
 			return;
 		}
-		if (_player._rush&& _stamina>0){
+		if (_player._rush&& _player._canRush&&_stamina>0){
 			_stamina -= 1;
 		}
 		else if (_player._rush && _stamina == 0){
 			_player.updateRush(false);
 		}
-		else if(!_player._rush&&_stamina!=100){
+		else if(_stamina!=100){
 			_stamina += 1;
+		}
+		else if (_stamina == 100){
 			_player.updateRush(true);
 		}
 		_stamBar.percent = _stamina;
