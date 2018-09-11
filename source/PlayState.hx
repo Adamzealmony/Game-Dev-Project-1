@@ -36,8 +36,12 @@ class PlayState extends FlxState
 		if (_player._rush&& _stamina>0){
 			_stamina -= 1;
 		}
+		else if (_player._rush && _stamina == 0){
+			_player.updateRush(false);
+		}
 		else if(!_player._rush&&_stamina!=100){
 			_stamina += 1;
+			_player.updateRush(true);
 		}
 		_hud.updateHUD(FlxMath.roundDecimal(_timer.timeLeft, 0), _score, _stamina);
 		super.update(elapsed);
