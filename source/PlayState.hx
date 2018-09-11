@@ -33,7 +33,14 @@ class PlayState extends FlxState
 			FlxG.switchState(new GameOverState());
 			return;
 		}
+		if (_player._rush&& _stamina>0){
+			_stamina -= 1;
+		}
+		else if(!_player._rush&&_stamina!=100){
+			_stamina += 1;
+		}
 		_hud.updateHUD(FlxMath.roundDecimal(_timer.timeLeft, 0), _score, _stamina);
 		super.update(elapsed);
 	}
+
 }
