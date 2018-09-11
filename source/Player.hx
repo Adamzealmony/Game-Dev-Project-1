@@ -35,7 +35,9 @@ import flixel.math.FlxPoint;
         super(X, Y);
 		
 		loadGraphic("assets/images/Walk.png", true, 100, 100);
-		 
+		setFacingFlip(FlxObject.UP, false, false);
+		setFacingFlip(FlxObject.DOWN, true, true);
+		
 	
 		animation.add("Walk", [0, 1, 0, 2], 5, false);
 	
@@ -66,25 +68,43 @@ import flixel.math.FlxPoint;
 		
 		 if(_up)
 		 {
-			mA = -90;			
+			mA = -90;
+	       facing = FlxObject.UP;
 		 }
 		 else if (_down)
 		 {
 			 mA = 90;
+			 facing = FlxObject.DOWN;
 		 }
 		 else if (_left )
 		 {
 			 mA = 180;
+			 facing = FlxObject.LEFT;
 		 }
 		 else if (_right)
 		 {
 			 mA = 0;
+			 facing = FlxObject.RIGHT;
 		 }
 		 //setting velocity.x to speed and velocity.y to 0 
 		 velocity.set(speed, 0);
 		 //rotate that point around(0,0) by mA degrees
 		 //a weak FlxPoint is recycled once it is used in a haxeflixel function
 		 velocity.rotate(FlxPoint.weak(0, 0), mA);
+		 if ((velocity.x != 0 || velocity.y != 0) && touching == FlxObject.NONE) // if the player is moving (velocity is not 0 for either axis), we need to change the animation to match their facing
+         {
+         switch (facing)
+         {
+         case FlxObject.LEFT:
+             animation.play("WALK");
+		 case  FlxObject.RIGHT:
+             animation.play("WALK");
+         case FlxObject.UP:
+             animation.play("WALK");
+         case FlxObject.DOWN:
+             animation.play("WALK");
+         }
+         }
 		   if (_rush) 
 		 {
 		 velocity.set(speed * 5, 0);
