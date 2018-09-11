@@ -26,7 +26,10 @@
         _txtScore = new FlxText(0, 2, 0, "Score: 0", 8);
         _txtScore.x = FlxG.camera.width/2-_txtScore.width;
 		_txtStamina = new FlxText(0, 2, 0, "Stamina: 100", 8);
-		_txtStamina.x = FlxG.camera.width-10-_txtStamina.width;
+		_txtStamina.x = FlxG.camera.width - 10 - _txtStamina.width;
+		_sprBack.scrollFactor.set(0, 0);
+		_txtTimer.scrollFactor.set(0, 0);
+		_txtScore.scrollFactor.set(0, 0);
         add(_sprBack);
         add(_txtTimer);
         add(_txtScore);
