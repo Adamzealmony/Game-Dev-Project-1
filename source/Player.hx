@@ -37,9 +37,13 @@ import flixel.math.FlxPoint;
 		loadGraphic("assets/images/Walk.png", true, 100, 100);
 		setFacingFlip(FlxObject.UP, false, false);
 		setFacingFlip(FlxObject.DOWN, true, true);
+		setFacingFlip(FlxObject.RIGHT, false, false);
+		setFacingFlip(FlxObject.LEFT, true, true);
 		
 	
 		animation.add("Walk", [0, 1, 0, 2], 5, false);
+		animation.add("lr", [3,4,3,5], 5, false);
+	
 	
 		 //slow down the player when it is not being moved 
 		 drag.x = drag.y = 1600;
@@ -96,9 +100,9 @@ import flixel.math.FlxPoint;
          switch (facing)
          {
          case FlxObject.LEFT:
-             animation.play("WALK");
+             animation.play("lr");
 		 case  FlxObject.RIGHT:
-             animation.play("WALK");
+             animation.play("lr");
          case FlxObject.UP:
              animation.play("WALK");
          case FlxObject.DOWN:
