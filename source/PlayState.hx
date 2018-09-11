@@ -52,7 +52,8 @@ class PlayState extends FlxState
 		_stamBar.percent = _stamina;
 		_stamBar.x = _player.x;
 		_stamBar.y = _player.y + 100;
-		_hud.updateHUD(FlxMath.roundDecimal(_timer.timeLeft, 0), _score, _stamina);
+		FlxG.camera.follow(_player);
+		_hud.updateHUD(FlxMath.roundDecimal(_timer.timeLeft, 0), _score);
 		super.update(elapsed);
 	}
 

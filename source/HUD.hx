@@ -13,8 +13,6 @@
     var _sprBack:FlxSprite;
     var _txtTimer:FlxText;
     var _txtScore:FlxText;
-	var _txtStamina:FlxText;
-
 
     public function new()
     {
@@ -24,19 +22,18 @@
         _sprBack.drawRect(0, 19, FlxG.width, 1, FlxColor.WHITE);
         _txtTimer = new FlxText(0, 2, 0, "Time: 100", 8);
         _txtScore = new FlxText(0, 2, 0, "Score: 0", 8);
-        _txtScore.x = FlxG.camera.width/2-_txtScore.width;
-		_txtStamina = new FlxText(0, 2, 0, "Stamina: 100", 8);
-		_txtStamina.x = FlxG.camera.width-10-_txtStamina.width;
+        _txtScore.x = FlxG.camera.width-10-_txtScore.width;
+		_sprBack.scrollFactor.set(0, 0);
+		_txtTimer.scrollFactor.set(0, 0);
+		_txtScore.scrollFactor.set(0, 0);
         add(_sprBack);
         add(_txtTimer);
         add(_txtScore);
-		add(_txtStamina);
     }
 
-     public function updateHUD(Timer:Float = 0, Score:Int = 0, Stamina=100):Void
+     public function updateHUD(Timer:Float = 0, Score:Int = 0):Void
      {
          _txtTimer.text = "Time: " + Std.string(Timer);
          _txtScore.text = "Score: " + Std.string(Score);
-		 _txtStamina.text = "Stamina: " + Std.string(Stamina);
      }
  }
