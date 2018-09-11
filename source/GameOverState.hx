@@ -12,7 +12,7 @@ class GameOverState extends FlxState
 	
 	override public function create():Void
 	{
-		_playAgainButton  = new FlxButton(0, 0, "Play", clickPlayAgain);
+		_playAgainButton  = new FlxButton(0, 0, "Play Again", clickPlayAgain);
 		_gameOverTxt = new FlxText(0, 2, 0, "Game Over", 24);
 		_playAgainButton.screenCenter();
 		_gameOverTxt.screenCenter();
