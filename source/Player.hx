@@ -36,20 +36,20 @@ import flixel.math.FlxPoint;
 		loadGraphic("assets/images/Walk.png", true, 100, 100);
 		 
 	
-		animation.add("Walk", [1, 2, 1, 3], 5, false);
+		animation.add("Walk", [0, 1, 0, 2], 5, false);
 	
 		 //slow down the player when it is not being moved 
-		 drag.x = drag.y = 2000;
+		 drag.x = drag.y = 1600;
 	  
 		 
 	 }
 		  
 	 public  function movement():Void 
 	 {
-		  _up = FlxG.keys.anyJustPressed([UP, W]);
-		 _down = FlxG.keys.anyJustPressed([DOWN, S]);
-		 _left = FlxG.keys.anyJustPressed([LEFT, A]);
-		 _right = FlxG.keys.anyJustPressed([RIGHT, D]);
+		  _up = FlxG.keys.anyPressed([UP, W]);
+		 _down = FlxG.keys.anyPressed([DOWN, S]);
+		 _left = FlxG.keys.anyPressed([LEFT, A]);
+		 _right = FlxG.keys.anyPressed([RIGHT, D]);
 		 //cancel the effect of opposing input 
 		 if (_up && _down)
 		 _up = _down = false;
@@ -62,7 +62,7 @@ import flixel.math.FlxPoint;
 		 var mA:Float = 0;
 		 if(_up)
 		 {
-			mA = -90;
+			mA = -90;			
 		 }
 		 else if (_down)
 		 {
