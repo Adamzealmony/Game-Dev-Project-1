@@ -17,6 +17,7 @@ import flixel.math.FlxPoint;
 	     public  var _left:Bool = false;
 	     public  var _right:Bool = false;
 		 public var _rush:Bool = false;
+		 public var _canRush:Bool = true;
 		 
 		 override public function update(elapsed:Float):Void 
 		 {
@@ -109,7 +110,7 @@ import flixel.math.FlxPoint;
              animation.play("WALK");
          }
          }
-		   if (_rush) 
+		   if (_rush&&_canRush) 
 		 {
 		 velocity.set(speed * 5, 0);
 		 velocity.rotate(FlxPoint.weak(0,0),mA);
@@ -123,6 +124,10 @@ import flixel.math.FlxPoint;
 		 
 		 
 	 }
+	 public function updateRush(rush:Bool):Void{
+		 _canRush = rush;
+	 }
+	
 	 
 	 }
 	 
