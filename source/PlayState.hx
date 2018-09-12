@@ -20,9 +20,11 @@ class PlayState extends FlxState
 		_player = new Player(20, 20);
 		_stamBar = new FlxBar(0, 0, LEFT_TO_RIGHT, 100, 10);
 		_stamBar.percent = _stamina;
+		_stamBar.screenCenter();
+		_stamBar.y += 50;
+		_stamBar.scrollFactor.set(0, 0);
 	    add(_player);
 		add(_stamBar);
-		_stamBar.screenCenter();
 		//creates a hud and timer
 		_hud = new HUD();
 		_timer = new FlxTimer();
@@ -50,8 +52,6 @@ class PlayState extends FlxState
 			_player.updateRush(true);
 		}
 		_stamBar.percent = _stamina;
-		_stamBar.x = _player.x;
-		_stamBar.y = _player.y + 100;
 		FlxG.camera.follow(_player);
 		_hud.updateHUD(FlxMath.roundDecimal(_timer.timeLeft, 0), _score);
 		super.update(elapsed);
