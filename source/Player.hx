@@ -18,6 +18,7 @@ import flixel.math.FlxPoint;
 	     public  var _right:Bool = false;
 		 public var _rush:Bool = false;
 		 public var _canRush:Bool = true;
+		 public var _swing:Bool = false;
 		 
 		 override public function update(elapsed:Float):Void 
 		 {
@@ -40,10 +41,15 @@ import flixel.math.FlxPoint;
 		setFacingFlip(FlxObject.DOWN, true, true);
 		setFacingFlip(FlxObject.RIGHT, false, false);
 		setFacingFlip(FlxObject.LEFT, true, true);
+	
 		
 	
 		animation.add("Walk", [0, 1, 0, 2], 5, false);
-		animation.add("lr", [3,4,3,5], 5, false);
+		animation.add("lr", [3, 4, 3, 5], 5, false);
+		//loadGraphic("assets/images/Swing.png", true, 100, 200);
+		//animation.add("udSwing", [0, 1, 2, 3, 4, 3, 2, 1, 0], 5, false);
+		//animation.add("lrSwing", [0, 1, 2, 3, 4, 3, 2, 1, 0], 5, false);
+		
 	
 	
 		 //slow down the player when it is not being moved 
@@ -59,6 +65,7 @@ import flixel.math.FlxPoint;
 		 _left = FlxG.keys.anyPressed([LEFT, A]);
 		 _right = FlxG.keys.anyPressed([RIGHT, D]);
 		 _rush = FlxG.keys.anyPressed([SHIFT]);
+		 _swing = FlxG.keys.anyJustPressed([SPACE]);
 		 //cancel the effect of opposing input 
 		 if (_up && _down)
 		 _up = _down = false;
@@ -71,17 +78,17 @@ import flixel.math.FlxPoint;
 		 animation.play("Walk");
 		 var mA:Float = 0;
 		
-		 if(_up)
+		 if(_up )
 		 {
 			mA = -90;
-	       facing = FlxObject.UP;
+	     facing = FlxObject.UP;
 		 }
-		 else if (_down)
+		 else if (_down )
 		 {
 			 mA = 90;
-			 facing = FlxObject.DOWN;
+		 facing = FlxObject.DOWN;
 		 }
-		 else if (_left )
+		 else if (_left)
 		 {
 			 mA = 180;
 			 facing = FlxObject.LEFT;
@@ -89,39 +96,77 @@ import flixel.math.FlxPoint;
 		 else if (_right)
 		 {
 			 mA = 0;
-			 facing = FlxObject.RIGHT;
+			facing = FlxObject.RIGHT;
 		 }
+		
 		 //setting velocity.x to speed and velocity.y to 0 
 		 velocity.set(speed, 0);
 		 //rotate that point around(0,0) by mA degrees
 		 //a weak FlxPoint is recycled once it is used in a haxeflixel function
 		 velocity.rotate(FlxPoint.weak(0, 0), mA);
-		 if ((velocity.x != 0 || velocity.y != 0) && touching == FlxObject.NONE) // if the player is moving (velocity is not 0 for either axis), we need to change the animation to match their facing
-         {
-         switch (facing)
-         {
-         case FlxObject.LEFT:
-             animation.play("lr");
-		 case  FlxObject.RIGHT:
-             animation.play("lr");
-         case FlxObject.UP:
-             animation.play("WALK");
-         case FlxObject.DOWN:
-             animation.play("WALK");
-         }
-         }
-		   if (_rush&&_canRush) 
+	
+		   if (_rush) 
 		 {
 		 velocity.set(speed * 5, 0);
 		 velocity.rotate(FlxPoint.weak(0,0),mA);
 		 
 		 }
-		 
-		 
-		 }
-		 
 		
 		 
+		 }
+	
+		  if (_swing && (facing == FlxObject.UP))
+		  {
+	    loadGraphic("assets/images/Swing.png", true, 100, 200);
+		
+		animation.add("udSwing", [0, 1, 2, 3, 4, 3, 2, 1, 0],30, false);
+		animation.play("udSwing");
+		  
+		  }
+		 if (_swing &&( facing == FlxObject.DOWN))
+		  {
+	    loadGraphic("assets/images/Swing.png", true, 100, 200);
+	
+		animation.add("udSwing", [0, 1, 2, 3, 4, 3, 2, 1, 0],30, false);
+		animation.play("udSwing");
+		
+		  }
+
+		   if (!_swing && _up) 
+		  {
+			  loadGraphic("assets/images/Walk.png", true, 100, 100);
+			
+		       animation.add("Walk", [0, 1, 0, 2], 5, true);
+			   animation.play("Walk");
+			  
+			  
+			  
+		  }
+		    if (!_swing &&_down )
+		  {
+			  loadGraphic("assets/images/Walk.png", true, 100, 100);
+			
+				 animation.add("Walk", [0, 1, 0, 2], 5, true);
+			     animation.play("Walk");
+			 
+			 
+			  
+		  }
+		   if (!_swing && _left )
+		  {
+			  loadGraphic("assets/images/Walk.png", true, 100, 100);
+			  animation.add("lr", [3, 4, 3, 5], 5, true);
+			  animation.play("lr");
+			  
+		  }
+		    if (!_swing && _right  )
+		  {
+			  loadGraphic("assets/images/Walk.png", true, 100, 100);
+			  animation.add("lr", [3, 4, 3, 5], 5, true);
+			  animation.play("lr");
+			  
+		  }
+		  
 		 
 	 }
 	 public function updateRush(rush:Bool):Void{
