@@ -105,7 +105,7 @@ import flixel.math.FlxPoint;
 		 //a weak FlxPoint is recycled once it is used in a haxeflixel function
 		 velocity.rotate(FlxPoint.weak(0, 0), mA);
 	
-		   if (_rush) 
+		   if (_rush&&_canRush) 
 		 {
 		 velocity.set(speed * 5, 0);
 		 velocity.rotate(FlxPoint.weak(0,0),mA);
