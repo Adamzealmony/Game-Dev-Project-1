@@ -13,9 +13,17 @@ import flixel.math.FlxPoint;
 		 //player speed
 		 public var speed:Float = 200;
 		 public  var _up:Bool = false;
+		 public var _up2:Bool = false;
+		 public var _up3:Bool = false;	 
 	     public  var _down:Bool = false;
+		 public  var _down2:Bool = false;
+		 public  var _down3:Bool = false;
 	     public  var _left:Bool = false;
+		 public  var _left2:Bool = false;
+		 public  var _left3:Bool = false;
 	     public  var _right:Bool = false;
+		 public  var _right2:Bool = false;
+		 public  var _right3:Bool = false;
 		 public var _rush:Bool = false;
 		 public var _canRush:Bool = true;
 		 public var _swing:Bool = false;
@@ -35,6 +43,8 @@ import flixel.math.FlxPoint;
      public function new(?X:Float=0, ?Y:Float=0)
      {
         super(X, Y);
+		
+
 		
 		loadGraphic("assets/images/Walk.png", true, 100, 100);
 		setFacingFlip(FlxObject.UP, false, false);
@@ -62,9 +72,17 @@ import flixel.math.FlxPoint;
 	 public  function movement():Void 
 	 {
 		  _up = FlxG.keys.anyPressed([UP, W]);
+		  _up2 = FlxG.keys.anyJustPressed([UP, W]);
+		  _up3 = FlxG.keys.anyJustReleased([UP, W]);
 		 _down = FlxG.keys.anyPressed([DOWN, S]);
+	     _down2 = FlxG.keys.anyJustPressed([DOWN, S]);
+		 _down3 = FlxG.keys.anyJustReleased([DOWN, S]);
 		 _left = FlxG.keys.anyPressed([LEFT, A]);
+		 _left2 = FlxG.keys.anyJustPressed([LEFT, A]);
+		 _left3 = FlxG.keys.anyJustReleased([LEFT, A]);
 		 _right = FlxG.keys.anyPressed([RIGHT, D]);
+		 _right2 = FlxG.keys.anyJustPressed([RIGHT, D]);
+		 _right3 = FlxG.keys.anyJustReleased([RIGHT, D]);
 		 _rush = FlxG.keys.anyPressed([SHIFT]);
 		 _swing = FlxG.keys.anyJustPressed([SPACE]);
 		 //cancel the effect of opposing input 
@@ -157,46 +175,61 @@ import flixel.math.FlxPoint;
 		
 		  }
 
-		   if (!_swing && _up) 
+		  if (!_swing && _up2 ) 
 		  {
 			  loadGraphic("assets/images/Walk.png", true, 100, 100);
 			  graphicLoaded();
 			  centerOffsets(true);
 			
-		       animation.add("WalkUD", [0, 1, 0, 2], 5, false);
-			   animation.play("WalkUD"); 
-			  
+		       animation.add("WalkUD", [0, 1, 0, 2], 5, true);
+		  animation.play("WalkUD"); 
+		  
 		  }
-		    if (!_swing &&_down )
+			   else if (_up3)
+			   {
+				   animation.finish();
+			   }
+			  
+		  
+		  
+		  
+		    if (!_swing &&_down2 )
 		  {
 			  loadGraphic("assets/images/Walk.png", true, 100, 100);
 			  graphicLoaded();
 			  centerOffsets(true);
 			
 				 animation.add("WalkUD", [0, 1, 0, 2], 5, false);
-			     animation.play("WalkUD");
-			 
-			 
-			  
+			     animation.play("WalkUD");  
 		  }
-		   if (!_swing && _left )
+		   else if (_down3)
+			   {
+				   animation.finish();
+			   }
+		   if (!_swing && _left2 )
 		  {
 			  loadGraphic("assets/images/Walk.png", true, 100, 100);
 			  graphicLoaded();
 			  centerOffsets(true);
 			  animation.add("WalkLR", [3, 4, 3, 5], 5, false);
 			  animation.play("WalkLR");
-			  
 		  }
-		    if (!_swing && _right  )
+		   else if (_left3)
+			   {
+				   animation.finish();
+			   }
+		    if (!_swing && _right2  )
 		  {
 			  loadGraphic("assets/images/Walk.png", true, 100, 100);
 			  graphicLoaded();
 			  centerOffsets(true);
 			  animation.add("WalkLR", [3, 4, 3, 5], 5, false);
 			  animation.play("WalkLR");
-			  
 		  }
+		   else if (_right3)
+			   {
+				   animation.finish();
+			   }
 		  
 		 
 	 }
