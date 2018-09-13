@@ -3,12 +3,17 @@ package;
 import flixel.FlxState;
 import flixel.FlxG;
 import flixel.util.FlxTimer;
+import flixel.addons.editors.tiled.*;
+import flixel.tile.FlxTilemap;
 import flixel.math.FlxMath;
+import flixel.FlxG;
 import flixel.ui.FlxBar;
 
 class PlayState extends FlxState
 {
 	var _player:Player;
+	var _map:TiledMap;
+	var _mWalls:FlxTilemap;
 	var _hud:HUD;
 	var _score:Int=0;
 	var _stamina:Int = 100;
@@ -16,6 +21,7 @@ class PlayState extends FlxState
 	var _stamBar:FlxBar;
 	override public function create():Void
 	{
+		 
 		//define the position of the player wrt the screen
 		_player = new Player(20, 20);
 		_stamBar = new FlxBar(0, 0, LEFT_TO_RIGHT, 100, 10);
