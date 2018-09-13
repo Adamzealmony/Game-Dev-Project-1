@@ -119,6 +119,8 @@ import flixel.math.FlxPoint;
 		  if (_swing && (facing == FlxObject.UP))
 		  {
 	    loadGraphic("assets/images/SwingUD.png", true, 100, 200);
+		graphicLoaded();
+		centerOffsets(true);
 		
 		animation.add("SwingUD", [0, 1, 2, 3, 4, 3, 2, 1, 0],30, false);
 		animation.play("SwingUD");
@@ -127,6 +129,8 @@ import flixel.math.FlxPoint;
 		 if (_swing &&( facing == FlxObject.DOWN))
 		  {
 	    loadGraphic("assets/images/SwingUD.png", true, 100, 200);
+		graphicLoaded();
+		centerOffsets(true);
 	
 		animation.add("SwingUD", [0, 1, 2, 3, 4, 3, 2, 1, 0],30, false);
 		animation.play("SwingUD");
@@ -135,6 +139,8 @@ import flixel.math.FlxPoint;
 		   if (_swing &&( facing == FlxObject.LEFT))
 		  {
 	    loadGraphic("assets/images/SwingLR.png", true, 200, 100);
+		graphicLoaded();
+		centerOffsets(true);
 	
 		animation.add("SwingLR", [0, 1, 2, 3, 4, 3, 2, 1, 0],30, false);
 		animation.play("SwingLR");
@@ -143,6 +149,8 @@ import flixel.math.FlxPoint;
 		     if (_swing &&( facing == FlxObject.RIGHT))
 		  {
 	    loadGraphic("assets/images/SwingLR.png", true, 200, 100);
+		graphicLoaded();
+		centerOffsets(true);
 	
 		animation.add("SwingLR", [0, 1, 2, 3, 4, 3, 2, 1, 0],30, false);
 		animation.play("SwingLR");
@@ -152,16 +160,20 @@ import flixel.math.FlxPoint;
 		   if (!_swing && _up) 
 		  {
 			  loadGraphic("assets/images/Walk.png", true, 100, 100);
+			  graphicLoaded();
+			  centerOffsets(true);
 			
-		       animation.add("WalkUD", [0, 1, 0, 2], 5, true);
+		       animation.add("WalkUD", [0, 1, 0, 2], 5, false);
 			   animation.play("WalkUD"); 
 			  
 		  }
 		    if (!_swing &&_down )
 		  {
 			  loadGraphic("assets/images/Walk.png", true, 100, 100);
+			  graphicLoaded();
+			  centerOffsets(true);
 			
-				 animation.add("WalkUD", [0, 1, 0, 2], 5, true);
+				 animation.add("WalkUD", [0, 1, 0, 2], 5, false);
 			     animation.play("WalkUD");
 			 
 			 
@@ -170,14 +182,18 @@ import flixel.math.FlxPoint;
 		   if (!_swing && _left )
 		  {
 			  loadGraphic("assets/images/Walk.png", true, 100, 100);
-			  animation.add("WalkLR", [3, 4, 3, 5], 5, true);
+			  graphicLoaded();
+			  centerOffsets(true);
+			  animation.add("WalkLR", [3, 4, 3, 5], 5, false);
 			  animation.play("WalkLR");
 			  
 		  }
 		    if (!_swing && _right  )
 		  {
 			  loadGraphic("assets/images/Walk.png", true, 100, 100);
-			  animation.add("WalkLR", [3, 4, 3, 5], 5, true);
+			  graphicLoaded();
+			  centerOffsets(true);
+			  animation.add("WalkLR", [3, 4, 3, 5], 5, false);
 			  animation.play("WalkLR");
 			  
 		  }
