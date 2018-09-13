@@ -44,11 +44,9 @@ import flixel.math.FlxPoint;
 	
 		
 	
-		animation.add("Walk", [0, 1, 0, 2], 5, false);
-		animation.add("lr", [3, 4, 3, 5], 5, false);
-		//loadGraphic("assets/images/Swing.png", true, 100, 200);
-		//animation.add("udSwing", [0, 1, 2, 3, 4, 3, 2, 1, 0], 5, false);
-		//animation.add("lrSwing", [0, 1, 2, 3, 4, 3, 2, 1, 0], 5, false);
+		animation.add("WalkUD", [0, 1, 0, 2], 5, false);
+		animation.add("WalkLR", [3, 4, 3, 5], 5, false);
+	
 		
 	
 	
@@ -78,7 +76,7 @@ import flixel.math.FlxPoint;
 		 if (_up || _down || _left || _right)
 		 {
 	     //creat a variable to hold the angle of our player
-		 animation.play("Walk");
+	
 		 var mA:Float = 0;
 		
 		 if(_up )
@@ -120,18 +118,34 @@ import flixel.math.FlxPoint;
 	
 		  if (_swing && (facing == FlxObject.UP))
 		  {
-	    loadGraphic("assets/images/Swing.png", true, 100, 200);
+	    loadGraphic("assets/images/SwingUD.png", true, 100, 200);
 		
-		animation.add("udSwing", [0, 1, 2, 3, 4, 3, 2, 1, 0],30, false);
-		animation.play("udSwing");
+		animation.add("SwingUD", [0, 1, 2, 3, 4, 3, 2, 1, 0],30, false);
+		animation.play("SwingUD");
 		  
 		  }
 		 if (_swing &&( facing == FlxObject.DOWN))
 		  {
-	    loadGraphic("assets/images/Swing.png", true, 100, 200);
+	    loadGraphic("assets/images/SwingUD.png", true, 100, 200);
 	
-		animation.add("udSwing", [0, 1, 2, 3, 4, 3, 2, 1, 0],30, false);
-		animation.play("udSwing");
+		animation.add("SwingUD", [0, 1, 2, 3, 4, 3, 2, 1, 0],30, false);
+		animation.play("SwingUD");
+		
+		  }
+		   if (_swing &&( facing == FlxObject.LEFT))
+		  {
+	    loadGraphic("assets/images/SwingLR.png", true, 200, 100);
+	
+		animation.add("SwingLR", [0, 1, 2, 3, 4, 3, 2, 1, 0],30, false);
+		animation.play("SwingLR");
+		
+		  }
+		     if (_swing &&( facing == FlxObject.RIGHT))
+		  {
+	    loadGraphic("assets/images/SwingLR.png", true, 200, 100);
+	
+		animation.add("SwingLR", [0, 1, 2, 3, 4, 3, 2, 1, 0],30, false);
+		animation.play("SwingLR");
 		
 		  }
 
@@ -139,18 +153,16 @@ import flixel.math.FlxPoint;
 		  {
 			  loadGraphic("assets/images/Walk.png", true, 100, 100);
 			
-		       animation.add("Walk", [0, 1, 0, 2], 5, true);
-			   animation.play("Walk");
-			  
-			  
+		       animation.add("WalkUD", [0, 1, 0, 2], 5, true);
+			   animation.play("WalkUD"); 
 			  
 		  }
 		    if (!_swing &&_down )
 		  {
 			  loadGraphic("assets/images/Walk.png", true, 100, 100);
 			
-				 animation.add("Walk", [0, 1, 0, 2], 5, true);
-			     animation.play("Walk");
+				 animation.add("WalkUD", [0, 1, 0, 2], 5, true);
+			     animation.play("WalkUD");
 			 
 			 
 			  
@@ -158,15 +170,15 @@ import flixel.math.FlxPoint;
 		   if (!_swing && _left )
 		  {
 			  loadGraphic("assets/images/Walk.png", true, 100, 100);
-			  animation.add("lr", [3, 4, 3, 5], 5, true);
-			  animation.play("lr");
+			  animation.add("WalkLR", [3, 4, 3, 5], 5, true);
+			  animation.play("WalkLR");
 			  
 		  }
 		    if (!_swing && _right  )
 		  {
 			  loadGraphic("assets/images/Walk.png", true, 100, 100);
-			  animation.add("lr", [3, 4, 3, 5], 5, true);
-			  animation.play("lr");
+			  animation.add("WalkLR", [3, 4, 3, 5], 5, true);
+			  animation.play("WalkLR");
 			  
 		  }
 		  
