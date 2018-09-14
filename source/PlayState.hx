@@ -34,11 +34,8 @@ class PlayState extends FlxState
 		add(level.objectsLayer);
 		//define the position of the player wrt the screen
 		_player = new Player(105, 105);
-		_stamBar = new FlxBar(0, 0, LEFT_TO_RIGHT, 100, 10);
+		_stamBar = new FlxBar(0, 0, LEFT_TO_RIGHT, 100, 10, _player);
 		_stamBar.percent = _stamina;
-		_stamBar.screenCenter();
-		_stamBar.y += 50;
-		_stamBar.scrollFactor.set(0, 0);
 	    add(_player);
 		add(_stamBar);
 		//creates a hud and timer
@@ -47,6 +44,7 @@ class PlayState extends FlxState
 		_timer.start();
 		//change .time to however long the player has
 		_timer.time = 100;
+		_stamBar.trackParent(0, 100);
 		add(_hud);
 		
 		
