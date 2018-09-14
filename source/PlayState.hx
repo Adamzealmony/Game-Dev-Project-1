@@ -10,6 +10,7 @@ import flixel.math.FlxMath;
 import flixel.ui.FlxBar;
 import flixel.util.FlxColor;
 
+
 class PlayState extends FlxState
 {
 	public var level:TiledLevel;
@@ -23,6 +24,7 @@ class PlayState extends FlxState
 	var _stamina:Int = 100;
 	var _timer:FlxTimer;
 	var _stamBar:FlxBar;
+	 
 	override public function create():Void
 	{
 		FlxG.mouse.visible = false;
@@ -33,13 +35,13 @@ class PlayState extends FlxState
 		add(level.imagesLayer);
 		add(level.objectsLayer);
 		//define the position of the player wrt the screen
-		_player = new Player(105, 105);
+	  
 		_stamBar = new FlxBar(0, 0, LEFT_TO_RIGHT, 100, 10, _player, "_stamina");
 		_stamBar.percent = _stamina;
 		_stamBar.trackParent(0, 100);
 		_stamBar.createColoredFilledBar(FlxColor.BLUE);
 		_stamBar.createColoredEmptyBar(FlxColor.BLACK);
-	    add(_player);
+	   	add(_player);
 		add(_stamBar);
 		//creates a hud and timer
 		_hud = new HUD();

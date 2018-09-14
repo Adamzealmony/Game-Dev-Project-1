@@ -28,6 +28,8 @@ import flixel.math.FlxPoint;
 		 public var _canRush:Bool = true;
 		 public var _swing:Bool = false;
 		 public var _stamina:Int = 100;
+		 public var _player = new FlxSprite ();
+		
 		 
 		 override public function update(elapsed:Float):Void 
 		 {
@@ -46,9 +48,11 @@ import flixel.math.FlxPoint;
      {
         super(X, Y);
 		
-
+     
 		
-		loadGraphic("assets/images/Walk.png", true, 100, 100);
+		_player.loadGraphic("assets/images/Walk.png", true, 100, 100);
+		add(_player);
+	
 		setFacingFlip(FlxObject.UP, false, false);
 		setFacingFlip(FlxObject.DOWN, true, true);
 		setFacingFlip(FlxObject.RIGHT, false, false);
