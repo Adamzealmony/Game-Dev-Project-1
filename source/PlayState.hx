@@ -33,7 +33,7 @@ class PlayState extends FlxState
 		add(level.imagesLayer);
 		add(level.objectsLayer);
 		//define the position of the player wrt the screen
-		_player = new Player(20, 20);
+		_player = new Player(105, 105);
 		_stamBar = new FlxBar(0, 0, LEFT_TO_RIGHT, 100, 10);
 		_stamBar.percent = _stamina;
 		_stamBar.screenCenter();
@@ -73,6 +73,7 @@ class PlayState extends FlxState
 		FlxG.camera.follow(_player);
 		_hud.updateHUD(FlxMath.roundDecimal(_timer.timeLeft, 0), _score);
 		super.update(elapsed);
+		FlxG.collide(_player, level.foregroundTiles);
 	}
 
 }
