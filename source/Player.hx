@@ -27,10 +27,12 @@ import flixel.math.FlxPoint;
 		 public var _rush:Bool = false;
 		 public var _canRush:Bool = true;
 		 public var _swing:Bool = false;
+		 public var _stamina:Int = 100;
 		 
 		 override public function update(elapsed:Float):Void 
 		 {
 			movement();
+			updateRush();
 			super.update(elapsed);
 			
 			 
@@ -233,8 +235,17 @@ import flixel.math.FlxPoint;
 		  
 		 
 	 }
-	 public function updateRush(rush:Bool):Void{
-		 _canRush = rush;
+	 public function updateRush():Void{
+		if (_rush&& _canRush&&_stamina>0){
+			_stamina -= 1;
+		}
+		else if(_stamina!=100){
+			_stamina += 1;
+			_canRush = false;
+		}
+		else if (_stamina == 100){
+			_canRush = true;
+		}
 	 }
 	
 	 
