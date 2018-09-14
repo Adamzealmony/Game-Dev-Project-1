@@ -6,6 +6,7 @@ import flixel.FlxObject;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.math.FlxPoint; 
+import flixel.system.FlxSound;
 
  class Player extends FlxSprite
 	 {
@@ -28,6 +29,8 @@ import flixel.math.FlxPoint;
 		 public var _canRush:Bool = true;
 		 public var _swing:Bool = false;
 		 public var _stamina:Int = 100;
+		 public var _sndStep:FlxSound;
+		 public var _sndSwing:FlxSound;
 		 
 		 override public function update(elapsed:Float):Void 
 		 {
@@ -67,6 +70,10 @@ import flixel.math.FlxPoint;
 		 //setting the hitbox, needed to be adjusted later
 		 setSize(8, 14);
 		 offset.set(4, 2);
+		 
+		 //load sounds
+		 _sndStep = FlxG.sound.load("assets/sounds/GrassWalkOLD.wav");
+		 _sndSwing = FlxG.sound.load("assets/sounds/GrassCut.wav");
 	  
 		 
 	 }
@@ -96,8 +103,10 @@ import flixel.math.FlxPoint;
 		 if (_up || _down || _left || _right)
 		 {
 	     //creat a variable to hold the angle of our player
-	
 		 var mA:Float = 0;
+		 
+		 //load plays walk sound
+		 _sndStep.play();
 		
 		 if(_up )
 		 {
@@ -144,6 +153,8 @@ import flixel.math.FlxPoint;
 		
 		animation.add("SwingUD", [0, 1, 2, 3, 4, 3, 2, 1, 0],30, false);
 		animation.play("SwingUD");
+		
+		_sndSwing.play();
 		  
 		  }
 		 if (_swing &&( facing == FlxObject.DOWN))
@@ -155,6 +166,7 @@ import flixel.math.FlxPoint;
 		animation.add("SwingUD", [0, 1, 2, 3, 4, 3, 2, 1, 0],30, false);
 		animation.play("SwingUD");
 		
+		_sndSwing.play();
 		  }
 		   if (_swing &&( facing == FlxObject.LEFT))
 		  {
@@ -165,6 +177,7 @@ import flixel.math.FlxPoint;
 		animation.add("SwingLR", [0, 1, 2, 3, 4, 3, 2, 1, 0],30, false);
 		animation.play("SwingLR");
 		
+		_sndSwing.play();
 		  }
 		     if (_swing &&( facing == FlxObject.RIGHT))
 		  {
@@ -175,6 +188,7 @@ import flixel.math.FlxPoint;
 		animation.add("SwingLR", [0, 1, 2, 3, 4, 3, 2, 1, 0],30, false);
 		animation.play("SwingLR");
 		
+		_sndSwing.play();
 		  }
 
 		  if (!_swing && _up2 ) 
