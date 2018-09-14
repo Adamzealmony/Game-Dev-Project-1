@@ -201,7 +201,7 @@ import flixel.math.FlxPoint;
 			  graphicLoaded();
 			  centerOffsets(true);
 			
-				 animation.add("WalkUD", [0, 1, 0, 2], 5, false);
+				 animation.add("WalkUD", [0, 1, 0, 2], 5, true);
 			     animation.play("WalkUD");  
 		  }
 		   else if (_down3)
@@ -213,7 +213,7 @@ import flixel.math.FlxPoint;
 			  loadGraphic("assets/images/Walk.png", true, 100, 100);
 			  graphicLoaded();
 			  centerOffsets(true);
-			  animation.add("WalkLR", [3, 4, 3, 5], 5, false);
+			  animation.add("WalkLR", [3, 4, 3, 5], 5, true);
 			  animation.play("WalkLR");
 		  }
 		   else if (_left3)
@@ -225,7 +225,7 @@ import flixel.math.FlxPoint;
 			  loadGraphic("assets/images/Walk.png", true, 100, 100);
 			  graphicLoaded();
 			  centerOffsets(true);
-			  animation.add("WalkLR", [3, 4, 3, 5], 5, false);
+			  animation.add("WalkLR", [3, 4, 3, 5], 5, true);
 			  animation.play("WalkLR");
 		  }
 		   else if (_right3)
