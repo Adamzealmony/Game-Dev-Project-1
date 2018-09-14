@@ -7,7 +7,6 @@ import flixel.util.FlxTimer;
 import flixel.addons.editors.tiled.*;
 import flixel.tile.FlxTilemap;
 import flixel.math.FlxMath;
-import flixel.FlxG;
 import flixel.ui.FlxBar;
 import flixel.util.FlxColor;
 
@@ -49,8 +48,6 @@ class PlayState extends FlxState
 		//change .time to however long the player has
 		_timer.time = 100;
 		add(_hud);
-		
-		
 		super.create();
 	}
 
