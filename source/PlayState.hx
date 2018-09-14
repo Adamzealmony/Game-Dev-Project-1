@@ -14,7 +14,7 @@ import flixel.util.FlxColor;
 class PlayState extends FlxState
 {
 	public var level:TiledLevel;
-	
+	public var _win:Bool = false;
 	public var _player:Player;
 	public var floor:FlxObject;
 	var _map:TiledMap;
@@ -57,7 +57,8 @@ class PlayState extends FlxState
 	override public function update(elapsed:Float):Void
 	{
 		 if (_timer.timeLeft <= .1){
-			FlxG.switchState(new GameOverState());
+			gameOver();
+			FlxG.switchState(new GameOverState(_win));
 			return;
 		}
 		FlxG.camera.follow(_player);
@@ -65,5 +66,15 @@ class PlayState extends FlxState
 		super.update(elapsed);
 		FlxG.collide(_player, level.foregroundTiles);
 	}
+	public function gameOver():Void
+	{
+		if (_score >= 100){
+			_win = true;
+		}
+		else{
+			_win = false;
+		}
+	}
 
 }
+
