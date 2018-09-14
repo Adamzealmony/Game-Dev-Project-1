@@ -15,7 +15,7 @@ class MenuState extends FlxState
 	
 	override public function create():Void
 	{
-		FlxG.sound.playMusic("assets/music/GrassSong.wav");
+		FlxG.sound.playMusic("assets/music/GrassSong.wav", 1);
 		
 		FlxG.camera.bgColor = 0xff131c1b;
 		_playButton  = new FlxButton(0, 0, "Play", clickPlay);

@@ -69,8 +69,8 @@ import flixel.system.FlxSound;
 		 drag.x = drag.y = 1600;
 		 //setting the hitbox, needed to be adjusted later
 		 //load sounds
-		 _sndStep = FlxG.sound.load("assets/sounds/GrassWalkOLD.wav");
-		 _sndSwing = FlxG.sound.load("assets/sounds/GrassCut.wav");
+		 _sndStep = FlxG.sound.load("assets/sounds/GrassWalkOLD.wav", 0.4);
+		 _sndSwing = FlxG.sound.load("assets/sounds/GrassCut.wav", 0.4);
 		 
 	 }
 		  
