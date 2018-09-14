@@ -17,6 +17,7 @@ import flixel.tile.FlxTilemap;
 import flixel.addons.tile.FlxTilemapExt;
 import flixel.addons.tile.FlxTileSpecial;
 import haxe.io.Path;
+import flixel.math.FlxPoint;
 
 class TiledLevel extends TiledMap
 {
@@ -27,6 +28,7 @@ class TiledLevel extends TiledMap
 	public var backgroundLayer:FlxGroup;
 	var collidableTileLayers:Array<FlxTilemap>;
 	public var imagesLayer:FlxGroup;
+	public var grass_coords:Array<FlxPoint>;
 	
 	public function new(tiledLevel:FlxTiledMapAsset, state:PlayState) 
 	{
@@ -97,6 +99,7 @@ class TiledLevel extends TiledMap
 			if (tileLayer.properties.contains("nocollide"))
 			{
 				backgroundLayer.add(tilemap);
+				grass_coords = tilemap.getTileCoords(4, false);
 			}
 			else
 			{
