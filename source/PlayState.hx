@@ -9,6 +9,7 @@ import flixel.tile.FlxTilemap;
 import flixel.math.FlxMath;
 import flixel.FlxG;
 import flixel.ui.FlxBar;
+import flixel.util.FlxColor;
 
 class PlayState extends FlxState
 {
@@ -37,6 +38,8 @@ class PlayState extends FlxState
 		_stamBar = new FlxBar(0, 0, LEFT_TO_RIGHT, 100, 10, _player, "_stamina");
 		_stamBar.percent = _stamina;
 		_stamBar.trackParent(0, 100);
+		_stamBar.createColoredFilledBar(FlxColor.BLUE);
+		_stamBar.createColoredEmptyBar(FlxColor.BLACK);
 	    add(_player);
 		add(_stamBar);
 		//creates a hud and timer
