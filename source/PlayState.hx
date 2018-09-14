@@ -19,6 +19,7 @@ class PlayState extends FlxState
 	public var _player:Player;
 	public var floor:FlxObject;
 	public var index:Int = 0;
+	public var type:Int = 0;
 	var grass_array:Array<FlxPoint>;
 	var _map:TiledMap;
 	var _mWalls:FlxTilemap;
@@ -51,7 +52,16 @@ class PlayState extends FlxState
 		
 		for (i in 0...50){
 			index = FlxG.random.int(0, grass_array.length - 1);
-			add(new Grass_1(grass_array[index].x, grass_array[index].y));
+			type = FlxG.random.int(0, 2);
+			if (type == 0){
+				add(new Grass_1(grass_array[index].x, grass_array[index].y));
+			}
+			else if (type == 1){
+				add(new Grass_2(grass_array[index].x, grass_array[index].y));
+			}
+			else if (type == 2){
+				add(new Grass_3(grass_array[index].x, grass_array[index].y));
+			}
 		}
 		
 	    
