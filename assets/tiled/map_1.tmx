@@ -4,7 +4,8 @@
  <layer name="Walkable Tiles" width="32" height="32">
   <properties>
    <property name="layers" value="floor"/>
-   <property name="tileset" value="tileset"/>
+   <property name="nocollide" type="bool" value="true"/>
+   <property name="tileset" value="tileset copy"/>
   </properties>
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -44,7 +45,7 @@
  <layer name="Obstacle Tiles" width="32" height="32">
   <properties>
    <property name="layers" value="walls"/>
-   <property name="tileset" value="tileset"/>
+   <property name="tileset" value="tileset copy"/>
   </properties>
   <data encoding="csv">
 6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,

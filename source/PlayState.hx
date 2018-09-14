@@ -1,6 +1,7 @@
 package;
 
 import flixel.FlxState;
+import flixel.FlxObject;
 import flixel.FlxG;
 import flixel.util.FlxTimer;
 import flixel.addons.editors.tiled.*;
@@ -11,7 +12,10 @@ import flixel.ui.FlxBar;
 
 class PlayState extends FlxState
 {
-	var _player:Player;
+	public var level:TiledLevel;
+	
+	public var _player:Player;
+	public var floor:FlxObject;
 	var _map:TiledMap;
 	var _mWalls:FlxTilemap;
 	var _hud:HUD;
@@ -21,7 +25,13 @@ class PlayState extends FlxState
 	var _stamBar:FlxBar;
 	override public function create():Void
 	{
+		FlxG.mouse.visible = false;
 		 
+		level = new TiledLevel("assets/tiled/map_1.tmx", this);
+		add(level.backgroundLayer);
+		add(level.foregroundTiles);
+		add(level.imagesLayer);
+		add(level.objectsLayer);
 		//define the position of the player wrt the screen
 		_player = new Player(20, 20);
 		_stamBar = new FlxBar(0, 0, LEFT_TO_RIGHT, 100, 10);
@@ -38,6 +48,8 @@ class PlayState extends FlxState
 		//change .time to however long the player has
 		_timer.time = 100;
 		add(_hud);
+		
+		
 		super.create();
 	}
 
