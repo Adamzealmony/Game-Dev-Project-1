@@ -9,6 +9,8 @@ import flixel.tile.FlxTilemap;
 import flixel.math.FlxMath;
 import flixel.ui.FlxBar;
 import flixel.util.FlxColor;
+import flixel.math.FlxPoint;
+import flixel.math.FlxRandom;
 
 
 class PlayState extends FlxState
@@ -17,6 +19,9 @@ class PlayState extends FlxState
 	public var _win:Bool = false;
 	public var _player:Player;
 	public var floor:FlxObject;
+	public var index:Int = 0;
+	public var type:Int = 0;
+	var grass_array:Array<FlxPoint>;
 	var _map:TiledMap;
 	var _mWalls:FlxTilemap;
 	var _hud:HUD;
@@ -30,10 +35,12 @@ class PlayState extends FlxState
 		FlxG.mouse.visible = false;
 		 
 		level = new TiledLevel("assets/tiled/map_1.tmx", this);
+				
 		add(level.backgroundLayer);
 		add(level.foregroundTiles);
 		add(level.imagesLayer);
 		add(level.objectsLayer);
+				
 		//define the position of the player wrt the screen
 	  
 		_stamBar = new FlxBar(0, 0, LEFT_TO_RIGHT, 100, 10, _player, "_stamina");
@@ -41,7 +48,28 @@ class PlayState extends FlxState
 		_stamBar.trackParent(0, 100);
 		_stamBar.createColoredFilledBar(FlxColor.BLUE);
 		_stamBar.createColoredEmptyBar(FlxColor.BLACK);
-	   	add(_player);
+		
+		//Grass growing place
+		grass_array = level.grass_coords;
+		
+		for (i in 0...50){
+			index = FlxG.random.int(0, grass_array.length - 1);
+			type = FlxG.random.int(0, 2);
+			if (type == 0){
+				add(new Grass_1(grass_array[index].x, grass_array[index].y));
+			}
+			else if (type == 1){
+				add(new Grass_2(grass_array[index].x, grass_array[index].y));
+			}
+			else if (type == 2){
+				add(new Grass_3(grass_array[index].x, grass_array[index].y));
+			}
+		}
+		
+	    
+		
+		
+		add(_player);
 		add(_stamBar);
 		//creates a hud and timer
 		_hud = new HUD();
