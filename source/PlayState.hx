@@ -39,15 +39,7 @@ class PlayState extends FlxState
 		add(level.backgroundLayer);
 		add(level.foregroundTiles);
 		add(level.imagesLayer);
-		add(level.objectsLayer);
-				
-		//define the position of the player wrt the screen
-	  
-		_stamBar = new FlxBar(0, 0, LEFT_TO_RIGHT, 100, 10, _player, "_stamina");
-		_stamBar.percent = _stamina;
-		_stamBar.trackParent(0, 100);
-		_stamBar.createColoredFilledBar(FlxColor.BLUE);
-		_stamBar.createColoredEmptyBar(FlxColor.BLACK);
+		add(level.objectsLayer);	  
 		
 		//Grass growing place
 		grass_array = level.grass_coords;
@@ -68,7 +60,12 @@ class PlayState extends FlxState
 		
 	    
 		//place player at 10,10 on the screen
-		_player = new Player (10,10);
+		_player = new Player (10, 10);
+		_stamBar = new FlxBar(0, 0, LEFT_TO_RIGHT, 100, 10, _player, "_stamina");
+		_stamBar.percent = _stamina;
+		_stamBar.createColoredFilledBar(FlxColor.BLUE);
+		_stamBar.createColoredEmptyBar(FlxColor.BLACK);
+		_stamBar.trackParent(0, 100);
 		add(_player);
 		add(_stamBar);
 		//creates a hud and timer
