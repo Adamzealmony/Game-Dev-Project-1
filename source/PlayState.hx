@@ -67,8 +67,8 @@ class PlayState extends FlxState
 		}
 		
 	    
-		
-		
+		//place player at 10,10 on the screen
+		_player = new Player (10,10);
 		add(_player);
 		add(_stamBar);
 		//creates a hud and timer

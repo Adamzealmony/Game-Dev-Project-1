@@ -51,8 +51,8 @@ import flixel.system.FlxSound;
 		
      
 		
-		_player.loadGraphic("assets/images/Walk.png", true, 100, 100);
-		add(_player);
+	    loadGraphic("assets/images/Player.png", true, 100, 100);
+		
 	
 		setFacingFlip(FlxObject.UP, false, false);
 		setFacingFlip(FlxObject.DOWN, true, true);
@@ -61,8 +61,11 @@ import flixel.system.FlxSound;
 	
 		
 	
-		animation.add("WalkUD", [0, 1, 0, 2], 5, false);
-		animation.add("WalkLR", [3, 4, 3, 5], 5, false);
+		animation.add("WalkUD", [10, 11, 10, 12], 5, true);
+		animation.add("WalkLR", [13, 14, 13, 15], 5, true);
+		animation.add("SwingLR", [5, 6, 7, 8, 9, 8, 7, 6, 5], 30, false);
+		animation.add("SwingUD", [0, 1, 2, 3, 4, 3, 2, 1, 0], 30, false);
+		
 	
 		
 	
@@ -145,11 +148,8 @@ import flixel.system.FlxSound;
 	
 		  if (_swing && (facing == FlxObject.UP))
 		  {
-	    loadGraphic("assets/images/SwingUD.png", true, 100, 200);
-		graphicLoaded();
-		centerOffsets(true);
+	   
 		
-		animation.add("SwingUD", [0, 1, 2, 3, 4, 3, 2, 1, 0],30, false);
 		animation.play("SwingUD");
 		
 		_sndSwing.play();
@@ -157,33 +157,21 @@ import flixel.system.FlxSound;
 		  }
 		 if (_swing &&( facing == FlxObject.DOWN))
 		  {
-	    loadGraphic("assets/images/SwingUD.png", true, 100, 200);
-		graphicLoaded();
-		centerOffsets(true);
-	
-		animation.add("SwingUD", [0, 1, 2, 3, 4, 3, 2, 1, 0],30, false);
+	   
 		animation.play("SwingUD");
 		
 		_sndSwing.play();
 		  }
 		   if (_swing &&( facing == FlxObject.LEFT))
 		  {
-	    loadGraphic("assets/images/SwingLR.png", true, 200, 100);
-		graphicLoaded();
-		centerOffsets(true);
-	
-		animation.add("SwingLR", [0, 1, 2, 3, 4, 3, 2, 1, 0],30, false);
+	   
 		animation.play("SwingLR");
 		
 		_sndSwing.play();
 		  }
 		     if (_swing &&( facing == FlxObject.RIGHT))
 		  {
-	    loadGraphic("assets/images/SwingLR.png", true, 200, 100);
-		graphicLoaded();
-		centerOffsets(true);
-	
-		animation.add("SwingLR", [0, 1, 2, 3, 4, 3, 2, 1, 0],30, false);
+	 
 		animation.play("SwingLR");
 		
 		_sndSwing.play();
@@ -191,11 +179,8 @@ import flixel.system.FlxSound;
 
 		  if (!_swing && _up2 ) 
 		  {
-			  loadGraphic("assets/images/Walk.png", true, 100, 100);
-			  graphicLoaded();
-			  centerOffsets(true);
+			  
 			
-		       animation.add("WalkUD", [0, 1, 0, 2], 5, true);
 		  animation.play("WalkUD"); 
 		  
 		  }
@@ -209,11 +194,7 @@ import flixel.system.FlxSound;
 		  
 		    if (!_swing &&_down2 )
 		  {
-			  loadGraphic("assets/images/Walk.png", true, 100, 100);
-			  graphicLoaded();
-			  centerOffsets(true);
 			
-				 animation.add("WalkUD", [0, 1, 0, 2], 5, true);
 			     animation.play("WalkUD");  
 		  }
 		   else if (_down3)
@@ -222,10 +203,7 @@ import flixel.system.FlxSound;
 			   }
 		   if (!_swing && _left2 )
 		  {
-			  loadGraphic("assets/images/Walk.png", true, 100, 100);
-			  graphicLoaded();
-			  centerOffsets(true);
-			  animation.add("WalkLR", [3, 4, 3, 5], 5, true);
+			 
 			  animation.play("WalkLR");
 		  }
 		   else if (_left3)
@@ -234,10 +212,7 @@ import flixel.system.FlxSound;
 			   }
 		    if (!_swing && _right2  )
 		  {
-			  loadGraphic("assets/images/Walk.png", true, 100, 100);
-			  graphicLoaded();
-			  centerOffsets(true);
-			  animation.add("WalkLR", [3, 4, 3, 5], 5, true);
+			  
 			  animation.play("WalkLR");
 		  }
 		   else if (_right3)
