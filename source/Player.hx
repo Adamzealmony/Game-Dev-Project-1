@@ -31,6 +31,7 @@ import flixel.system.FlxSound;
 		 public var _stamina:Int = 100;
 		 public var _sndStep:FlxSound;
 		 public var _sndSwing:FlxSound;
+		 public var _sndRush:FlxSound;
 		 
 		 override public function update(elapsed:Float):Void 
 		 {
@@ -76,6 +77,8 @@ import flixel.system.FlxSound;
 		 //load sounds
 		 _sndStep = FlxG.sound.load("assets/sounds/GrassWalkOLD.wav", 0.4);
 		 _sndSwing = FlxG.sound.load("assets/sounds/GrassCut.wav", 0.4);
+		 _sndRush = FlxG.sound.load("assets/sounds/Rush.wav", 1);
+		 
 		 
 	 }
 		  
@@ -138,8 +141,9 @@ import flixel.system.FlxSound;
 	
 		   if (_rush&&_canRush) 
 		 {
-		 velocity.set(speed * 5, 0);
-		 velocity.rotate(FlxPoint.weak(0,0),mA);
+		 velocity.set(speed * 7, 0);
+		 velocity.rotate(FlxPoint.weak(0, 0), mA);
+		 _sndRush.play();
 		 
 		 }
 		
@@ -224,7 +228,7 @@ import flixel.system.FlxSound;
 	 }
 	 public function updateRush():Void{
 		if (_rush&& _canRush&&_stamina>0){
-			_stamina -= 1;
+			_stamina -= 4;
 		}
 		else if(_stamina!=100){
 			_stamina += 1;
