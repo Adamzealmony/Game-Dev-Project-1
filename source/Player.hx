@@ -74,6 +74,7 @@ import flixel.system.FlxSound;
 		 //slow down the player when it is not being moved 
 		 drag.x = drag.y = 1600;
 		 //setting the hitbox, needed to be adjusted later
+		 
 		 //load sounds
 		 _sndStep = FlxG.sound.load("assets/sounds/GrassWalkOLD.wav", 0.4);
 		 _sndSwing = FlxG.sound.load("assets/sounds/GrassCut.wav", 0.4);
@@ -101,6 +102,14 @@ import flixel.system.FlxSound;
 		 //cancel the effect of opposing input 
 		 if (_up && _down)
 		 _up = _down = false;
+		 if (_up && _right)
+		 _up = _right = false;
+		 if (_up && _left)
+		 _up = _left = false;
+		 if (_down && _left)
+		 _down = _left = false;
+		 if (_down && _right)
+		 _down = _right = false;
 		 if (_left && _right)
 		 _left = _right = false;
 		 //if player is acturally moving 
