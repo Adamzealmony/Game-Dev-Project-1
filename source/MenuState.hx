@@ -19,7 +19,9 @@ class MenuState extends FlxState
 		
 		FlxG.camera.bgColor = 0xff131c1b;
 		_playButton  = new FlxButton(0, 0, "Play", clickPlay);
+		_playButton.onUp.sound =FlxG.sound.load("assets/sounds/GrassCut.wav", 1);
 		_infoButton = new FlxButton(0, 0, "Info", clickInfo);
+		_infoButton.onUp.sound =FlxG.sound.load("assets/sounds/GrassCut.wav", 1);
 		_playButton.screenCenter();
 		_infoButton.screenCenter();
 		_infoButton.x += _playButton.width / 2 + 10;
