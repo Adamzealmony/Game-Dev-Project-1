@@ -104,21 +104,30 @@ class PlayState extends FlxState
 		FlxG.collide(_player, level.foregroundTiles);
 	}
 	 function onOverlap(_player:Player, grass_1:Grass_1 ):Void
-	 {    if (_player._swing ==true)
+	 {    if (_player._swing == true){
+			//change number to whatever score is desired
 		   grass_1.kill();
+		   _score+= 15;
+		}
 	 }
 	  function onOverlap2(_player:Player, grass_2:Grass_2 ):Void
-	 {    if (_player._swing ==true)
+	 {    if (_player._swing ==true){
 		   grass_2.kill();
+		   	//change number to whatever score is desired, if we are spawning grass 1 in the same place then comment out the line below
+		   _score+= 10;
 		   //grass_1 = new Grass_1(1300,1000);
 		   //add(grass_1);
+		}
 		   
 	 }
 	  function onOverlap3(_player:Player, grass_3:Grass_3 ):Void
-	 {    if (_player._swing ==true)
+	 {    if (_player._swing ==true){
 		   grass_3.kill();
+		   //change number to whatever score is desired, if we are spawning grass 2 in the same place then comment out the line below
+		   _score+= 5;
 		  // grass_2 = new Grass_2(1400,1000);
 		   //add(grass_2);
+		}
 	 }
 	public function gameOver():Void
 	{
