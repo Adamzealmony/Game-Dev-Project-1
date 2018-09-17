@@ -74,6 +74,7 @@ import flixel.system.FlxSound;
 		 //slow down the player when it is not being moved 
 		 drag.x = drag.y = 1600;
 		 //setting the hitbox, needed to be adjusted later
+		 setSize(50,50);
 		 
 		 //load sounds
 		 _sndStep = FlxG.sound.load("assets/sounds/GrassWalkOLD.wav", 0.4);
