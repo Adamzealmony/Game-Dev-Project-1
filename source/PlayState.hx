@@ -78,18 +78,12 @@ class PlayState extends FlxState
 		//place player at 1000,1000 on the screen
 		_player = new Player (1000, 1000);
 		_stamBar = new FlxBar(0, 0, LEFT_TO_RIGHT, 100, 10, _player, "_stamina");
-		grass_1 = new Grass_1(1200,1000);
-		grass_2 = new Grass_2(1300,1000);
-		grass_3 = new Grass_3(1400,1000);
 		_stamBar.percent = _stamina;
 		_stamBar.createColoredFilledBar(FlxColor.BLUE);
 		_stamBar.createColoredEmptyBar(FlxColor.BLACK);
 		_stamBar.trackParent(0, 100);
 		add(_player);
 		add(_stamBar);
-		add(grass_1);
-		add(grass_2);
-		add(grass_3);
 		//creates a hud and timer
 		_hud = new HUD();
 		_timer = new FlxTimer();
