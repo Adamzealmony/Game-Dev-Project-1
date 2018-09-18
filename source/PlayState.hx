@@ -101,9 +101,9 @@ class PlayState extends FlxState
 	}
 
 	override public function update(elapsed:Float):Void
-	{ FlxG.overlap(_player  , grass_1 , onOverlap);
-	  FlxG.overlap(_player  , grass_2, onOverlap2);
-	  FlxG.overlap(_player  , grass_3 , onOverlap3);
+	{   grass_1Col();
+		grass_2Col();
+		grass_3Col();
 	 
 		 if (_timer.timeLeft <= .1){
 			gameOver();
@@ -149,6 +149,24 @@ class PlayState extends FlxState
 		else{
 			_win = false;
 		}
+	}
+	function grass_1Col(){
+		for ( grass in grass1_array){
+			FlxG.overlap(_player  , grass , onOverlap);
+		}
+		
+	}
+	function grass_2Col(){
+		for ( grass in grass2_array){
+			FlxG.overlap(_player  , grass , onOverlap2);
+		}
+		
+	}
+	function grass_3Col(){
+		for ( grass in grass3_array){
+			FlxG.overlap(_player  , grass , onOverlap3);
+		}
+		
 	}
 
 }
