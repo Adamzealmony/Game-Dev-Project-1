@@ -38,7 +38,7 @@ class PlayState extends FlxState
 	{
 		FlxG.mouse.visible = false;
 		 
-		level = new TiledLevel("assets/tiled/field_one.tmx", this);
+		level = new TiledLevel("assets/tiled/field_two.tmx", this);
 				
 		add(level.backgroundLayer);
 		add(level.foregroundTiles);
