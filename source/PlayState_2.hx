@@ -13,9 +13,9 @@ import flixel.math.FlxPoint;
 import flixel.math.FlxRandom;
 
 
-class PlayState extends FlxState
+class PlayState_2 extends FlxState
 {
-	public var level:TiledLevel;
+	public var level:TiledLevel_2;
 	public var _win:Bool = false;
 	public var _player:Player;
 	public var floor:FlxObject;
@@ -42,7 +42,7 @@ class PlayState extends FlxState
 	{
 		FlxG.mouse.visible = false;
 		 
-		level = new TiledLevel("assets/tiled/field_one.tmx", this);
+		level = new TiledLevel_2("assets/tiled/field_two.tmx", this);
 				
 		add(level.backgroundLayer);
 		add(level.foregroundTiles);
@@ -81,7 +81,7 @@ class PlayState extends FlxState
 		
 	    
 		//place player at 1000,1000 on the screen
-		_player = new Player (1700, 1600);
+		_player = new Player (1000, 1000);
 		_stamBar = new FlxBar(0, 0, LEFT_TO_RIGHT, 100, 10, _player, "_stamina");
 		_stamBar.percent = _stamina;
 		_stamBar.createColoredFilledBar(FlxColor.BLUE);
@@ -106,7 +106,7 @@ class PlayState extends FlxState
 	 
 		 if (_timer.timeLeft <= .1){
 			gameOver();
-			FlxG.switchState(new EndLevelOneState(_win));
+			FlxG.switchState(new EndLevelTwoState(_win));
 			return;
 		}
 		FlxG.camera.follow(_player);
@@ -118,7 +118,7 @@ class PlayState extends FlxState
 	 {    if (_player._swing == true){
 			//change number to whatever score is desired
 		   grass_1.kill();
-		   _score+= 10;
+		   _score+= 15;
 		}
 	 }
 	  function onOverlap2(_player:Player, grass_2:Grass_2 ):Void
@@ -127,10 +127,8 @@ class PlayState extends FlxState
 		 grass1_array.push(grass_1);
 		 add(grass_1);
 		   grass_2.kill();
-		   members.remove(_hud);
-		   members.push(_hud);
 		   	//change number to whatever score is desired, if we are spawning grass 1 in the same place then comment out the line below
-		   //_score+= 10;
+		   _score+= 10;
 		   //grass_1 = new Grass_1(1300,1000);
 		   //add(grass_1);
 		}
@@ -142,10 +140,8 @@ class PlayState extends FlxState
 		 grass2_array.push(grass_2);
 		 add(grass_2);
 		   grass_3.kill();
-		   members.remove(_hud);
-		   members.push(_hud);
 		   //change number to whatever score is desired, if we are spawning grass 2 in the same place then comment out the line below
-		   //_score+= 5;
+		   _score+= 5;
 		  // grass_2 = new Grass_2(1400,1000);
 		   //add(grass_2);
 		}
