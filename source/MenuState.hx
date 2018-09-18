@@ -11,6 +11,7 @@ class MenuState extends FlxState
 	var _playButton:FlxButton;
 	var _infoButton:FlxButton;
 	var _infoText:FlxText;
+	var _titleText:FlxText;
 	var _exitInfoButton:FlxButton;
 	
 	override public function create():Void
@@ -26,12 +27,16 @@ class MenuState extends FlxState
 		_infoButton.screenCenter();
 		_infoButton.x += _playButton.width / 2 + 10;
 		_playButton.x -= _infoButton.width / 2 + 10;
+		_titleText = new FlxText(0, 0, 0, "Grassanova", 24);
+		_titleText.screenCenter();
+		_titleText.y -= 100;
 		_exitInfoButton = new FlxButton(0, 0, "Exit Info", exitInfo);
 		_exitInfoButton.screenCenter();
 		_exitInfoButton.y += 100;
 		add(_playButton);
 		add(_infoButton);
 		add(_exitInfoButton);
+		add(_titleText);
 		_exitInfoButton.visible = false;
 		super.create();
 	}
