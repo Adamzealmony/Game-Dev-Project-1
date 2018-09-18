@@ -5,9 +5,10 @@ import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 
-class GameOverState extends FlxState
+class EndLevelTwoState extends FlxState
 {
 	var _playAgainButton:FlxButton;
+	var _nextLevelButton:FlxButton;
 	var _gameOverTxt:FlxText;
 	var _win:Bool = false;
 	public function new(Win:Bool){
@@ -17,18 +18,19 @@ class GameOverState extends FlxState
 	
 	override public function create():Void
 	{
-		_playAgainButton  = new FlxButton(0, 0, "Play Again", clickPlayAgain);
+		
+			_playAgainButton  = new FlxButton(0, 0, "Play Again", clickPlayAgain);
 		if (_win){
 			_gameOverTxt = new FlxText(0, 2, 0, "You Win!!", 24);
 		}
 		else{
 			_gameOverTxt = new FlxText(0, 2, 0, "You Lose.", 24);
 		}
-		_playAgainButton.screenCenter();
+			_playAgainButton.screenCenter();
+			_playAgainButton.y += 100;
+			add(_playAgainButton);
 		_gameOverTxt.screenCenter();
-		_playAgainButton.y += 100;
 		add(_gameOverTxt);
-		add(_playAgainButton);
 		super.create();
 	}
 

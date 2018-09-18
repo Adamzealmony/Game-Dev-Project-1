@@ -13,9 +13,9 @@ import flixel.math.FlxPoint;
 import flixel.math.FlxRandom;
 
 
-class PlayState extends FlxState
+class PlayState_2 extends FlxState
 {
-	public var level:TiledLevel;
+	public var level:TiledLevel_2;
 	public var _win:Bool = false;
 	public var _player:Player;
 	public var floor:FlxObject;
@@ -42,7 +42,7 @@ class PlayState extends FlxState
 	{
 		FlxG.mouse.visible = false;
 		 
-		level = new TiledLevel("assets/tiled/field_one.tmx", this);
+		level = new TiledLevel_2("assets/tiled/field_two.tmx", this);
 				
 		add(level.backgroundLayer);
 		add(level.foregroundTiles);
@@ -106,7 +106,7 @@ class PlayState extends FlxState
 	 
 		 if (_timer.timeLeft <= .1){
 			gameOver();
-			FlxG.switchState(new EndLevelOneState(_win));
+			FlxG.switchState(new EndLevelTwoState(_win));
 			return;
 		}
 		FlxG.camera.follow(_player);
