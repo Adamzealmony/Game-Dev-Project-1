@@ -127,6 +127,8 @@ class PlayState extends FlxState
 		 grass1_array.push(grass_1);
 		 add(grass_1);
 		   grass_2.kill();
+		   members.remove(_hud);
+		   members.push(_hud);
 		   	//change number to whatever score is desired, if we are spawning grass 1 in the same place then comment out the line below
 		   //_score+= 10;
 		   //grass_1 = new Grass_1(1300,1000);
@@ -140,6 +142,8 @@ class PlayState extends FlxState
 		 grass2_array.push(grass_2);
 		 add(grass_2);
 		   grass_3.kill();
+		   members.remove(_hud);
+		   members.push(_hud);
 		   //change number to whatever score is desired, if we are spawning grass 2 in the same place then comment out the line below
 		   //_score+= 5;
 		  // grass_2 = new Grass_2(1400,1000);
