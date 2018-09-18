@@ -81,7 +81,7 @@ class PlayState extends FlxState
 		
 	    
 		//place player at 1000,1000 on the screen
-		_player = new Player (1000, 1000);
+		_player = new Player (1700, 1600);
 		_stamBar = new FlxBar(0, 0, LEFT_TO_RIGHT, 100, 10, _player, "_stamina");
 		_stamBar.percent = _stamina;
 		_stamBar.createColoredFilledBar(FlxColor.BLUE);
