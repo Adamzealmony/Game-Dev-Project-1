@@ -35,7 +35,9 @@ class PlayState extends FlxState
 	var _score:Int=0;
 	var _stamina:Int = 100;
 	var _timer:FlxTimer;
+	var _growtimer:FlxTimer;
 	var _stamBar:FlxBar;
+	var cnt:Int = 0;
 	
 	 
 	override public function create():Void
@@ -95,6 +97,13 @@ class PlayState extends FlxState
 		_timer.start();
 		//change .time to however long the player has
 		_timer.time = 100;
+		_growtimer = new FlxTimer();
+		_growtimer.time = 10;
+		trace(_growtimer.timeLeft);
+		_growtimer.start(10);
+		trace(_growtimer.timeLeft);
+		
+		
 		add(_hud);
 		super.create();
 	}
@@ -109,6 +118,20 @@ class PlayState extends FlxState
 			FlxG.switchState(new EndLevelOneState(_win));
 			return;
 		}
+	
+		if (_growtimer.timeLeft <=1.0)
+		{  for ( grass in grass2_array)
+			{	     _growtimer.reset();
+				
+			trace(_growtimer.timeLeft);
+			grass.kill();
+		grass_3= new Grass_3(grass.x, grass.y);
+		grass3_array.push(grass_3);
+		add(grass_3);
+	      
+			}
+		}
+		
 		FlxG.camera.follow(_player);
 		_hud.updateHUD(FlxMath.roundDecimal(_timer.timeLeft, 0), _score);
 		super.update(elapsed);
@@ -178,10 +201,11 @@ class PlayState extends FlxState
 		
 	}
 	public function spawn_Grass2(g:Grass_1){
+		g.kill();
 		grass_2= new Grass_2(g.x, g.y);
 		grass2_array.push(grass_2);
 		add(grass_2);
-		g.kill();
+	
 	}
 
 }
