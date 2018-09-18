@@ -25,6 +25,9 @@ class PlayState extends FlxState
 	public var grass_2:Grass_2;
 	public var grass_3:Grass_3;
 	var grass_array:Array<FlxPoint>;
+	var grass1_array:Array<Grass_1>;
+	var grass2_array:Array<Grass_2>;
+	var grass3_array:Array<Grass_3>;
 	var _map:TiledMap;
 	var _mWalls:FlxTilemap;
 	var _hud:HUD;
@@ -47,18 +50,27 @@ class PlayState extends FlxState
 		
 		//Grass growing place
 		grass_array = level.grass_coords;
+		grass1_array = new Array<Grass_1>();
+		grass2_array = new Array<Grass_2>();
+		grass3_array = new Array<Grass_3>();
 		
 		for (i in 0...50){
 			index = FlxG.random.int(0, grass_array.length - 1);
 			type = FlxG.random.int(0, 2);
 			if (type == 0){
-				add(new Grass_1(grass_array[index].x, grass_array[index].y));
+				grass_1 = new Grass_1(grass_array[index].x, grass_array[index].y);
+				grass1_array.push(grass_1);
+				add(grass_1);
 			}
 			else if (type == 1){
-				add(new Grass_2(grass_array[index].x, grass_array[index].y));
+				grass_2 = new Grass_2(grass_array[index].x, grass_array[index].y);
+				grass2_array.push(grass_2);
+				add(grass_2);
 			}
 			else if (type == 2){
-				add(new Grass_3(grass_array[index].x, grass_array[index].y));
+				grass_3 = new Grass_3(grass_array[index].x, grass_array[index].y);
+				grass3_array.push(grass_3);
+				add(grass_3);
 			}
 		}
 		
@@ -66,18 +78,12 @@ class PlayState extends FlxState
 		//place player at 1000,1000 on the screen
 		_player = new Player (1000, 1000);
 		_stamBar = new FlxBar(0, 0, LEFT_TO_RIGHT, 100, 10, _player, "_stamina");
-		grass_1 = new Grass_1(1200,1000);
-		grass_2 = new Grass_2(1300,1000);
-		grass_3 = new Grass_3(1400,1000);
 		_stamBar.percent = _stamina;
 		_stamBar.createColoredFilledBar(FlxColor.BLUE);
 		_stamBar.createColoredEmptyBar(FlxColor.BLACK);
 		_stamBar.trackParent(0, 100);
 		add(_player);
 		add(_stamBar);
-		add(grass_1);
-		add(grass_2);
-		add(grass_3);
 		//creates a hud and timer
 		_hud = new HUD();
 		_timer = new FlxTimer();
@@ -89,9 +95,9 @@ class PlayState extends FlxState
 	}
 
 	override public function update(elapsed:Float):Void
-	{ FlxG.overlap(_player  , grass_1 , onOverlap);
-	  FlxG.overlap(_player  , grass_2, onOverlap2);
-	  FlxG.overlap(_player  , grass_3 , onOverlap3);
+	{   grass_1Col();
+		grass_2Col();
+		grass_3Col();
 	 
 		 if (_timer.timeLeft <= .1){
 			gameOver();
@@ -137,6 +143,24 @@ class PlayState extends FlxState
 		else{
 			_win = false;
 		}
+	}
+	function grass_1Col(){
+		for ( grass in grass1_array){
+			FlxG.overlap(_player  , grass , onOverlap);
+		}
+		
+	}
+	function grass_2Col(){
+		for ( grass in grass2_array){
+			FlxG.overlap(_player  , grass , onOverlap2);
+		}
+		
+	}
+	function grass_3Col(){
+		for ( grass in grass3_array){
+			FlxG.overlap(_player  , grass , onOverlap3);
+		}
+		
 	}
 
 }
