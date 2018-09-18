@@ -177,6 +177,12 @@ class PlayState extends FlxState
 		}
 		
 	}
+	public function spawn_Grass2(g:Grass_1){
+		grass_2= new Grass_2(g.x, g.y);
+		grass2_array.push(grass_2);
+		add(grass_2);
+		g.kill();
+	}
 
 }
 
