@@ -35,5 +35,6 @@
      {
          _txtTimer.text = "Time: " + Std.string(Timer);
          _txtScore.text = "Score: " + Std.string(Score);
+		 _txtScore.x=FlxG.camera.width-10-_txtScore.width;
      }
  }
