@@ -25,6 +25,7 @@ class PlayState extends FlxState
 	public var grass_2:Grass_2;
 	public var grass_3:Grass_3;
 	var grass_array:Array<FlxPoint>;
+	var exist_array:Array<Int>;
 	var grass1_array:Array<Grass_1>;
 	var grass2_array:Array<Grass_2>;
 	var grass3_array:Array<Grass_3>;
@@ -49,26 +50,30 @@ class PlayState extends FlxState
 		add(level.objectsLayer);	  
 		
 		//Grass growing place
+		exist_array = new Array<Int>();
 		grass_array = level.grass_coords;
 		grass1_array = new Array<Grass_1>();
 		grass2_array = new Array<Grass_2>();
 		grass3_array = new Array<Grass_3>();
 		
-		for (i in 0...50){
-			index = FlxG.random.int(0, grass_array.length - 1);
+		for (i in 0...200){
+			index = FlxG.random.int(0, grass_array.length - 1, exist_array);
 			type = FlxG.random.int(0, 2);
 			if (type == 0){
 				grass_1 = new Grass_1(grass_array[index].x, grass_array[index].y);
+				exist_array.push(index);
 				grass1_array.push(grass_1);
 				add(grass_1);
 			}
 			else if (type == 1){
 				grass_2 = new Grass_2(grass_array[index].x, grass_array[index].y);
+				exist_array.push(index);
 				grass2_array.push(grass_2);
 				add(grass_2);
 			}
 			else if (type == 2){
 				grass_3 = new Grass_3(grass_array[index].x, grass_array[index].y);
+				exist_array.push(index);
 				grass3_array.push(grass_3);
 				add(grass_3);
 			}
