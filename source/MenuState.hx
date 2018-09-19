@@ -37,12 +37,17 @@ class MenuState extends FlxState
 		_exitInfoButton = new FlxButton(0, 0, "Exit Info", exitInfo);
 		_exitInfoButton.screenCenter();
 		_exitInfoButton.y += 100;
+		_infoText = new FlxText(0, 0, 0, "Use arrow keys or WASD to move the player.\n\nPress shift to move faster if you have enough stamina.\n\nPress space to swing the scythe.", 16);
+		_infoText.screenCenter();
+		_infoText.y -= 50;
 		add(_playButton);
 		add(_infoButton);
 		add(_exitInfoButton);
 		add(_titleText);
 		add(_story);
+		add(_infoText);
 		_exitInfoButton.visible = false;
+		_infoText.visible = false;
 		super.create();
 	}
 
@@ -61,13 +66,17 @@ class MenuState extends FlxState
 		_playButton.visible = false;
 		_infoButton.visible = false;
 		_story.visible = false;
+		_infoText.visible = true;
 		_exitInfoButton.visible = true;
+		_titleText.visible = false;
 	}
 	function exitInfo():Void{
 		_exitInfoButton.visible = false;
 		_playButton.visible = true;
 		_infoButton.visible = true;
 		_story.visible = true;
+		_titleText.visible = true;
+		_infoText.visible = false;
 	}
 	
 }
