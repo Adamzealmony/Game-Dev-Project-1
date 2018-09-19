@@ -40,8 +40,8 @@ class PlayState extends FlxState
 	var _score:Int=0;
 	var _stamina:Int = 100;
 	var _timer:FlxTimer;
-	var _growtimer:FlxTimer;
-	var _growtimer2:FlxTimer;
+	//var _growtimer:FlxTimer;
+	//var _growtimer2:FlxTimer;
 	var _stamBar:FlxBar;
 	var cnt:Int = 0;
 	//change this variable below to whatever the required score is to win!!
@@ -105,14 +105,14 @@ class PlayState extends FlxState
 		_timer.start();
 		//change .time to however long the player has
 		_timer.time = 100;
-		_growtimer = new FlxTimer();
-		_growtimer.time = 20;
+		//_growtimer = new FlxTimer();
+		//_growtimer.time = 20;
 		//trace(_growtimer.timeLeft);
-		_growtimer.start(20);
+		//_growtimer.start(20);
 		//trace(_growtimer.timeLeft);
-		_growtimer2 = new FlxTimer();
-		_growtimer2.time = 40;
-		_growtimer2.start(40);
+		//_growtimer2 = new FlxTimer();
+		//_growtimer2.time = 40;
+		//_growtimer2.start(40);
 		
 		
 		add(_hud);
@@ -167,7 +167,7 @@ class PlayState extends FlxState
 		if (grow1 == true){
 			grass_2= new Grass_2(g1Grow.x, g1Grow.y);
 			grass2_array.push(grass_2);
-			add(grass_2);
+			replace(g1Grow, grass_2);
 			g1Grow.kill();
 			grow1 = false;
 			members.remove(_hud);
@@ -176,7 +176,7 @@ class PlayState extends FlxState
 		if (grow2 == true){
 			grass_3= new Grass_3(g2Grow.x, g2Grow.y);
 			grass3_array.push(grass_3);
-			add(grass_3);
+			replace(g2Grow, grass_3);
 			g2Grow.kill();
 			grow2 = false;
 			members.remove(_hud);
