@@ -112,13 +112,14 @@ class PlayState extends FlxState
 	{   grass_1Col();
 		grass_2Col();
 		grass_3Col();
+		  //  trace(_growtimer.timeLeft);
 	 
 		 if (_timer.timeLeft <= .1){
 			gameOver();
 			FlxG.switchState(new EndLevelOneState(_win));
 			return;
 		}
-	
+	  
 		if (_growtimer.timeLeft <=1.0)
 		{  for ( grass in grass2_array)
 			{	     _growtimer.reset();
