@@ -27,6 +27,8 @@ class Grass_2 extends FlxSprite
 	{
 		PlayState.g2Grow = this;
 		PlayState.grow2 = true;
+		PlayState_2.g2Grow = this;
+		PlayState_2.grow2 = true;
 	}
 	}
 }

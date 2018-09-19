@@ -24,6 +24,10 @@ class PlayState_2 extends FlxState
 	public var grass_1:Grass_1;
 	public var grass_2:Grass_2;
 	public var grass_3:Grass_3;
+	public static var grow1:Bool = false;
+	public static var g1Grow:Grass_1;
+	public static var grow2:Bool = false;
+	public static var g2Grow:Grass_2;
 	var grass_array:Array<FlxPoint>;
 	var exist_array:Array<Int>;
 	var grass1_array:Array<Grass_1>;
@@ -81,7 +85,7 @@ class PlayState_2 extends FlxState
 		
 	    
 		//place player at 1000,1000 on the screen
-		_player = new Player (1000, 1000);
+		_player = new Player (1000, 900);
 		_stamBar = new FlxBar(0, 0, LEFT_TO_RIGHT, 100, 10, _player, "_stamina");
 		_stamBar.percent = _stamina;
 		_stamBar.createColoredFilledBar(FlxColor.BLUE);
@@ -113,22 +117,41 @@ class PlayState_2 extends FlxState
 		_hud.updateHUD(FlxMath.roundDecimal(_timer.timeLeft, 0), _score);
 		super.update(elapsed);
 		FlxG.collide(_player, level.foregroundTiles);
+		
+		if (grow1 == true){
+			grass_2= new Grass_2(g1Grow.x, g1Grow.y);
+			grass2_array.push(grass_2);
+			replace(g1Grow, grass_2);
+			g1Grow.kill();
+			grow1 = false;
+			members.remove(_hud);
+		    members.push(_hud);
+		}
+		if (grow2 == true){
+			grass_3= new Grass_3(g2Grow.x, g2Grow.y);
+			grass3_array.push(grass_3);
+			replace(g2Grow, grass_3);
+			g2Grow.kill();
+			grow2 = false;
+			members.remove(_hud);
+		    members.push(_hud);
+		}
 	}
 	 function onOverlap(_player:Player, grass_1:Grass_1 ):Void
 	 {    if (_player._swing == true){
 			//change number to whatever score is desired
 		   grass_1.kill();
-		   _score+= 15;
+		   _score+= 10;
 		}
 	 }
 	  function onOverlap2(_player:Player, grass_2:Grass_2 ):Void
 	 {    if (_player._swing ==true){
 		 grass_1 = new Grass_1(grass_2.x, grass_2.y);
 		 grass1_array.push(grass_1);
-		 add(grass_1);
+		 replace(grass_2, grass_1);
 		   grass_2.kill();
 		   	//change number to whatever score is desired, if we are spawning grass 1 in the same place then comment out the line below
-		   _score+= 10;
+		 
 		   //grass_1 = new Grass_1(1300,1000);
 		   //add(grass_1);
 		}
@@ -138,10 +161,10 @@ class PlayState_2 extends FlxState
 	 {    if (_player._swing == true){
 		 grass_2 = new Grass_2(grass_3.x, grass_3.y);
 		 grass2_array.push(grass_2);
-		 add(grass_2);
+		 replace(grass_3, grass_2);
 		   grass_3.kill();
 		   //change number to whatever score is desired, if we are spawning grass 2 in the same place then comment out the line below
-		   _score+= 5;
+		 
 		  // grass_2 = new Grass_2(1400,1000);
 		   //add(grass_2);
 		}
