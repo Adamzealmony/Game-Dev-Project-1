@@ -127,7 +127,7 @@ class PlayState extends FlxState
 	 
 		if (_timer.timeLeft <= .1){
 			gameOver();
-			FlxG.switchState(new EndLevelOneState(_win));
+			FlxG.switchState(new EndLevelOneState(_win, _score));
 			return;
 		}
 		/*

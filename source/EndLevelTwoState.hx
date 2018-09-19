@@ -11,7 +11,9 @@ class EndLevelTwoState extends FlxState
 	var _nextLevelButton:FlxButton;
 	var _gameOverTxt:FlxText;
 	var _win:Bool = false;
-	public function new(Win:Bool){
+	var _score:Int;
+	public function new(Win:Bool, Score:Int){
+		_score = Score;
 		_win = Win;
 		super();
 	}
@@ -21,7 +23,7 @@ class EndLevelTwoState extends FlxState
 		
 			_playAgainButton  = new FlxButton(0, 0, "Play Again", clickPlayAgain);
 		if (_win){
-			_gameOverTxt = new FlxText(0, 2, 0, "You Win!!", 24);
+			_gameOverTxt = new FlxText(0, 2, 0, "You Win!!\n Your Score: " + Std.string(_score), 24);
 		}
 		else{
 			_gameOverTxt = new FlxText(0, 2, 0, "You Lose.", 24);
