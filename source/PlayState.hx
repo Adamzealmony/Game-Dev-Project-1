@@ -44,6 +44,8 @@ class PlayState extends FlxState
 	var _growtimer2:FlxTimer;
 	var _stamBar:FlxBar;
 	var cnt:Int = 0;
+	//change this variable below to whatever the required score is to win!!
+	var reqScore = 800;
 	
 	 
 	override public function create():Void
@@ -98,7 +100,7 @@ class PlayState extends FlxState
 		add(_player);
 		add(_stamBar);
 		//creates a hud and timer
-		_hud = new HUD();
+		_hud = new HUD(reqScore);
 		_timer = new FlxTimer();
 		_timer.start();
 		//change .time to however long the player has
@@ -123,11 +125,12 @@ class PlayState extends FlxState
 		grass_3Col();
 		  //  trace(_growtimer.timeLeft);
 	 
-		/* if (_timer.timeLeft <= .1){
+		if (_timer.timeLeft <= .1){
 			gameOver();
 			FlxG.switchState(new EndLevelOneState(_win));
 			return;
 		}
+		/*
 	  	if (_growtimer.timeLeft <=.1)
 		{  for ( grass in grass1_array)
 			{	     
@@ -221,7 +224,7 @@ class PlayState extends FlxState
 	
 	public function gameOver():Void
 	{
-		if (_score >= 100){
+		if (_score >= reqScore){
 			_win = true;
 		}
 		else{
