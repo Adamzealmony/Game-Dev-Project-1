@@ -46,7 +46,7 @@
 			  _txtReq.text = "Score Left: " + Std.string(_reqScore-Score);
 		 }
 		 else{
-			 _txtReq.text = "Score Left: 0");
+			 _txtReq.text = "Score Left: 0";
 		 }
 		 _txtScore.x = FlxG.camera.width - 10 - _txtScore.width;
 		 _txtReq.x = FlxG.camera.width/2 - _txtReq.width+10;
