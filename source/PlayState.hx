@@ -36,6 +36,7 @@ class PlayState extends FlxState
 	var _stamina:Int = 100;
 	var _timer:FlxTimer;
 	var _growtimer:FlxTimer;
+	var _growtimer2:FlxTimer;
 	var _stamBar:FlxBar;
 	var cnt:Int = 0;
 	
@@ -98,10 +99,13 @@ class PlayState extends FlxState
 		//change .time to however long the player has
 		_timer.time = 100;
 		_growtimer = new FlxTimer();
-		_growtimer.time = 40;
-		trace(_growtimer.timeLeft);
-		_growtimer.start(40);
-		trace(_growtimer.timeLeft);
+		_growtimer.time = 20;
+		//trace(_growtimer.timeLeft);
+		_growtimer.start(20);
+		//trace(_growtimer.timeLeft);
+		_growtimer2 = new FlxTimer();
+		_growtimer2.time = 40;
+		_growtimer2.start(40);
 		
 		
 		add(_hud);
@@ -119,29 +123,31 @@ class PlayState extends FlxState
 			FlxG.switchState(new EndLevelOneState(_win));
 			return;
 		}
-	  	if (_growtimer.timeLeft <=20.0)
+	  	if (_growtimer.timeLeft <=.1)
 		{  for ( grass in grass1_array)
-			{	     _growtimer.reset();
+			{	     
 			grass1_array.remove(grass);
-			trace(_growtimer.timeLeft);
+			//trace(_growtimer.timeLeft);
 			grass.kill();
 		grass_2= new Grass_2(grass.x, grass.y);
 		grass2_array.push(grass_2);
 		add(grass_2);
 	      
 			}
+			_growtimer.reset();
 		}
-		if (_growtimer.timeLeft <=0.1)
+		if (_growtimer2.timeLeft <=0.1)
 		{  for ( grass in grass2_array)
-			{	     _growtimer.reset();
+			{	   
 			grass2_array.remove(grass);
-			trace(_growtimer.timeLeft);
+			//trace(_growtimer2.timeLeft);
 			grass.kill();
 		grass_3= new Grass_3(grass.x, grass.y);
 		grass3_array.push(grass_3);
 		add(grass_3);
 	      
 			}
+			 _growtimer2.reset();
 		}
 		
 		
