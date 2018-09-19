@@ -24,7 +24,7 @@ class EndLevelTwoState extends FlxState
 			_playAgainButton  = new FlxButton(0, 0, "Main Menu", clickPlayAgain);
 			_gameOverTxt = new FlxText(0, 0, 600, "As you take a moment to wipe the sweat off your brow, you see the second team emerge into the clearing. They give you a pat on the back and send you back to base as they finish what you started. \nYourScore: " + Std.string(_score), 24);
 			_gameOverTxt.screenCenter();
-			_gameOverTxt.y -= 250;
+			_gameOverTxt.y -= 300;
 			_playAgainButton.screenCenter();
 			_playAgainButton.y += 100;
 			add(_playAgainButton);
@@ -33,7 +33,7 @@ class EndLevelTwoState extends FlxState
 			_playAgainButton  = new FlxButton(0, 0, "Main Menu", clickPlayAgain);
 			_gameOverTxt = new FlxText(0, 0, 600, "You are too slow and the grass grows over your body and you can't move. By the time the second team arrives it is too late. \nYour Score: " + Std.string(_score), 24);
 			_gameOverTxt.screenCenter();
-			_gameOverTxt.y -= 250;
+			_gameOverTxt.y -= 300;
 			_playAgainButton.screenCenter();
 			_playAgainButton.y += 100;
 			add(_playAgainButton);
