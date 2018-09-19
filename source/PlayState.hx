@@ -1,5 +1,6 @@
 package;
 
+import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.FlxObject;
 import flixel.FlxG;
@@ -24,6 +25,10 @@ class PlayState extends FlxState
 	public var grass_1:Grass_1;
 	public var grass_2:Grass_2;
 	public var grass_3:Grass_3;
+	public static var grow1:Bool = false;
+	public static var g1Grow:Grass_1;
+	public static var grow2:Bool = false;
+	public static var g2Grow:Grass_2;
 	var grass_array:Array<FlxPoint>;
 	var exist_array:Array<Int>;
 	var grass1_array:Array<Grass_1>;
@@ -35,7 +40,10 @@ class PlayState extends FlxState
 	var _score:Int=0;
 	var _stamina:Int = 100;
 	var _timer:FlxTimer;
+	var _growtimer:FlxTimer;
+	var _growtimer2:FlxTimer;
 	var _stamBar:FlxBar;
+	var cnt:Int = 0;
 	
 	 
 	override public function create():Void
@@ -95,6 +103,16 @@ class PlayState extends FlxState
 		_timer.start();
 		//change .time to however long the player has
 		_timer.time = 100;
+		_growtimer = new FlxTimer();
+		_growtimer.time = 20;
+		//trace(_growtimer.timeLeft);
+		_growtimer.start(20);
+		//trace(_growtimer.timeLeft);
+		_growtimer2 = new FlxTimer();
+		_growtimer2.time = 40;
+		_growtimer2.start(40);
+		
+		
 		add(_hud);
 		super.create();
 	}
@@ -103,21 +121,66 @@ class PlayState extends FlxState
 	{   grass_1Col();
 		grass_2Col();
 		grass_3Col();
+		  //  trace(_growtimer.timeLeft);
 	 
 		 if (_timer.timeLeft <= .1){
 			gameOver();
 			FlxG.switchState(new EndLevelOneState(_win));
 			return;
 		}
+	  	if (_growtimer.timeLeft <=.1)
+		{  for ( grass in grass1_array)
+			{	     
+			grass1_array.remove(grass);
+			//trace(_growtimer.timeLeft);
+			grass.kill();
+		grass_2= new Grass_2(grass.x, grass.y);
+		grass2_array.push(grass_2);
+		add(grass_2);
+	      
+			}
+			_growtimer.reset();
+		}
+		if (_growtimer2.timeLeft <=0.1)
+		{  for ( grass in grass2_array)
+			{	   
+			grass2_array.remove(grass);
+			//trace(_growtimer2.timeLeft);
+			grass.kill();
+		grass_3= new Grass_3(grass.x, grass.y);
+		grass3_array.push(grass_3);
+		add(grass_3);
+	      
+			}
+			 _growtimer2.reset();
+		}
+		
+		
 		FlxG.camera.follow(_player);
 		_hud.updateHUD(FlxMath.roundDecimal(_timer.timeLeft, 0), _score);
 		super.update(elapsed);
 		FlxG.collide(_player, level.foregroundTiles);
+		
+		if (grow1 == true){
+			grass_2= new Grass_2(g1Grow.x, g1Grow.y);
+			grass2_array.push(grass_2);
+			add(grass_2);
+			g1Grow.kill();
+			grow1 = false;
+		}
+		if (grow2 == true){
+			grass_3= new Grass_3(g2Grow.x, g2Grow.y);
+			grass3_array.push(grass_3);
+			add(grass_3);
+			g2Grow.kill();
+			grow2 = false;
+		}
 	}
 	 function onOverlap(_player:Player, grass_1:Grass_1 ):Void
 	 {
 		 if (_player._swing == true){
 			//change number to whatever score is desired
+			grass1_array.remove(grass_1);
 		   grass_1.kill();
 		   _score+= 10;
 		}
@@ -151,6 +214,7 @@ class PlayState extends FlxState
 		   //add(grass_2);
 		}
 	 }
+	
 	public function gameOver():Void
 	{
 		if (_score >= 100){
