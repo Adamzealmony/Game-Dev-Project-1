@@ -123,7 +123,7 @@ class PlayState extends FlxState
 		grass_3Col();
 		  //  trace(_growtimer.timeLeft);
 	 
-		 if (_timer.timeLeft <= .1){
+		/* if (_timer.timeLeft <= .1){
 			gameOver();
 			FlxG.switchState(new EndLevelOneState(_win));
 			return;
@@ -154,7 +154,7 @@ class PlayState extends FlxState
 			}
 			 _growtimer2.reset();
 		}
-		
+		*/
 		
 		FlxG.camera.follow(_player);
 		_hud.updateHUD(FlxMath.roundDecimal(_timer.timeLeft, 0), _score);
