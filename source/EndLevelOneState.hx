@@ -25,7 +25,7 @@ class EndLevelOneState extends FlxState
 			_nextLevelButton  = new FlxButton(0, 0, "Investigate", clickNextLevel);
 			_gameOverTxt = new FlxText(0, 0, 600, "As the second team arrives, you get reports of more grass growing in a nearby forest. You decide to investigate this new area while the second team finishes up here. \nYour Score: " + Std.string(_score), 24);
 			_gameOverTxt.screenCenter();
-			_gameOverTxt.y -= 150;
+			_gameOverTxt.y -= 250;
 			_nextLevelButton.screenCenter();
 			_nextLevelButton.y += 100;
 			add(_nextLevelButton);
@@ -34,7 +34,7 @@ class EndLevelOneState extends FlxState
 			_playAgainButton  = new FlxButton(0, 0, "Main Menu", clickPlayAgain);
 			_gameOverTxt = new FlxText(0, 0, 600, "You are too slow and the grass grows over your body and you can't move. By the time the second team arrives it is too late. \nYour Score" + Std.string(_score), 24);
 			_gameOverTxt.screenCenter();
-			_gameOverTxt.y -= 150;
+			_gameOverTxt.y -= 250;
 			_playAgainButton.screenCenter();
 			_playAgainButton.y += 100;
 			add(_playAgainButton);
