@@ -1,5 +1,6 @@
 package;
 
+import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.FlxObject;
 import flixel.FlxG;
@@ -24,6 +25,10 @@ class PlayState extends FlxState
 	public var grass_1:Grass_1;
 	public var grass_2:Grass_2;
 	public var grass_3:Grass_3;
+	public static var grow1:Bool = false;
+	public static var g1Grow:Grass_1;
+	public static var grow2:Bool = false;
+	public static var g2Grow:Grass_2;
 	var grass_array:Array<FlxPoint>;
 	var exist_array:Array<Int>;
 	var grass1_array:Array<Grass_1>;
@@ -113,6 +118,21 @@ class PlayState extends FlxState
 		_hud.updateHUD(FlxMath.roundDecimal(_timer.timeLeft, 0), _score);
 		super.update(elapsed);
 		FlxG.collide(_player, level.foregroundTiles);
+		
+		if (grow1 == true){
+			grass_2= new Grass_2(g1Grow.x, g1Grow.y);
+			grass2_array.push(grass_2);
+			add(grass_2);
+			g1Grow.kill();
+			grow1 = false;
+		}
+		if (grow2 == true){
+			grass_3= new Grass_3(g2Grow.x, g2Grow.y);
+			grass3_array.push(grass_3);
+			add(grass_3);
+			g2Grow.kill();
+			grow2 = false;
+		}
 	}
 	 function onOverlap(_player:Player, grass_1:Grass_1 ):Void
 	 {    if (_player._swing == true){
@@ -150,6 +170,7 @@ class PlayState extends FlxState
 		   //add(grass_2);
 		}
 	 }
+	
 	public function gameOver():Void
 	{
 		if (_score >= 100){
@@ -176,12 +197,6 @@ class PlayState extends FlxState
 			FlxG.overlap(_player  , grass , onOverlap3);
 		}
 		
-	}
-	public function spawn_Grass2(g:Grass_1){
-		grass_2= new Grass_2(g.x, g.y);
-		grass2_array.push(grass_2);
-		add(grass_2);
-		g.kill();
 	}
 
 }
