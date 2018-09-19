@@ -1,7 +1,7 @@
- package;
+package;
 
- import flixel.FlxSprite;
- import flixel.system.FlxAssets.FlxGraphicAsset;
+import flixel.FlxSprite;
+import flixel.system.FlxAssets.FlxGraphicAsset;
 import flixel.FlxObject;
 import flixel.util.FlxColor;
 import flixel.FlxG;
