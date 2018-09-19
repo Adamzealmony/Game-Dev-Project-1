@@ -152,7 +152,7 @@ import flixel.system.FlxSound;
 	
 		   if (_rush&&_canRush) 
 		 {
-		 velocity.set(speed * 7, 0);
+		 velocity.set(speed * 3, 0);
 		 velocity.rotate(FlxPoint.weak(0, 0), mA);
 		 _sndRush.play();
 		 
@@ -239,7 +239,7 @@ import flixel.system.FlxSound;
 	 }
 	 public function updateRush():Void{
 		if (_rush&& _canRush&&_stamina>0){
-			_stamina -= 4;
+			_stamina -= 1;
 		}
 		else if(_stamina!=100){
 			_stamina += 1;
