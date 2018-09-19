@@ -98,9 +98,9 @@ class PlayState extends FlxState
 		//change .time to however long the player has
 		_timer.time = 100;
 		_growtimer = new FlxTimer();
-		_growtimer.time = 10;
+		_growtimer.time = 40;
 		trace(_growtimer.timeLeft);
-		_growtimer.start(10);
+		_growtimer.start(40);
 		trace(_growtimer.timeLeft);
 		
 		
@@ -119,8 +119,19 @@ class PlayState extends FlxState
 			FlxG.switchState(new EndLevelOneState(_win));
 			return;
 		}
-	  
-		if (_growtimer.timeLeft <=1.0)
+	  	if (_growtimer.timeLeft <=20.0)
+		{  for ( grass in grass1_array)
+			{	     _growtimer.reset();
+			grass1_array.remove(grass);
+			trace(_growtimer.timeLeft);
+			grass.kill();
+		grass_2= new Grass_2(grass.x, grass.y);
+		grass2_array.push(grass_2);
+		add(grass_2);
+	      
+			}
+		}
+		if (_growtimer.timeLeft <=0.1)
 		{  for ( grass in grass2_array)
 			{	     _growtimer.reset();
 			grass2_array.remove(grass);
@@ -132,6 +143,7 @@ class PlayState extends FlxState
 	      
 			}
 		}
+		
 		
 		FlxG.camera.follow(_player);
 		_hud.updateHUD(FlxMath.roundDecimal(_timer.timeLeft, 0), _score);
