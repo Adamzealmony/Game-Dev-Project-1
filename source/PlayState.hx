@@ -167,6 +167,8 @@ class PlayState extends FlxState
 			add(grass_2);
 			g1Grow.kill();
 			grow1 = false;
+			members.remove(_hud);
+		    members.push(_hud);
 		}
 		if (grow2 == true){
 			grass_3= new Grass_3(g2Grow.x, g2Grow.y);
@@ -174,6 +176,8 @@ class PlayState extends FlxState
 			add(grass_3);
 			g2Grow.kill();
 			grow2 = false;
+			members.remove(_hud);
+		    members.push(_hud);
 		}
 	}
 	 function onOverlap(_player:Player, grass_1:Grass_1 ):Void
