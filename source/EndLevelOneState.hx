@@ -11,7 +11,9 @@ class EndLevelOneState extends FlxState
 	var _nextLevelButton:FlxButton;
 	var _gameOverTxt:FlxText;
 	var _win:Bool = false;
-	public function new(Win:Bool){
+	var _score:Int;
+	public function new(Win:Bool, Score:Int){
+		_score = Score;
 		_win = Win;
 		super();
 	}
@@ -21,7 +23,7 @@ class EndLevelOneState extends FlxState
 		
 		if (_win){
 			_nextLevelButton  = new FlxButton(0, 0, "Investigate", clickNextLevel);
-			_gameOverTxt = new FlxText(0, 0, 600, "As the second team arrives, you get reports of more grass growing in a nearby forest. You decide to investigate this new area while the second team finishes up here.", 24);
+			_gameOverTxt = new FlxText(0, 0, 600, "As the second team arrives, you get reports of more grass growing in a nearby forest. You decide to investigate this new area while the second team finishes up here. \nYour Score: " + Std.string(_score), 24);
 			_gameOverTxt.screenCenter();
 			_gameOverTxt.y -= 150;
 			_nextLevelButton.screenCenter();
@@ -30,7 +32,7 @@ class EndLevelOneState extends FlxState
 		}
 		else{
 			_playAgainButton  = new FlxButton(0, 0, "Main Menu", clickPlayAgain);
-			_gameOverTxt = new FlxText(0, 0, 600, "You are too slow and the grass grows over your body and you can't move. By the time the second team arrives it is too late.", 24);
+			_gameOverTxt = new FlxText(0, 0, 600, "You are too slow and the grass grows over your body and you can't move. By the time the second team arrives it is too late. \nYour Score" + Std.string(_score), 24);
 			_gameOverTxt.screenCenter();
 			_gameOverTxt.y -= 150;
 			_playAgainButton.screenCenter();

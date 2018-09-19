@@ -110,7 +110,7 @@ class PlayState_2 extends FlxState
 	 
 		 if (_timer.timeLeft <= .1){
 			gameOver();
-			FlxG.switchState(new EndLevelTwoState(_win));
+			FlxG.switchState(new EndLevelTwoState(_win, _score));
 			return;
 		}
 		FlxG.camera.follow(_player);
