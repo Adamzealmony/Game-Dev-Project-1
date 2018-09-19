@@ -164,14 +164,14 @@ class PlayState extends FlxState
 		if (grow1 == true){
 			grass_2= new Grass_2(g1Grow.x, g1Grow.y);
 			grass2_array.push(grass_2);
-			add(grass_2);
+			replace(g1Grow, grass_2);
 			g1Grow.kill();
 			grow1 = false;
 		}
 		if (grow2 == true){
 			grass_3= new Grass_3(g2Grow.x, g2Grow.y);
 			grass3_array.push(grass_3);
-			add(grass_3);
+			replace(g2Grow, grass_3);
 			g2Grow.kill();
 			grow2 = false;
 		}
