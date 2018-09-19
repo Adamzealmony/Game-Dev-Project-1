@@ -123,7 +123,7 @@ class PlayState extends FlxState
 		grass_3Col();
 		  //  trace(_growtimer.timeLeft);
 	 
-		 if (_timer.timeLeft <= .1){
+		/* if (_timer.timeLeft <= .1){
 			gameOver();
 			FlxG.switchState(new EndLevelOneState(_win));
 			return;
@@ -154,7 +154,7 @@ class PlayState extends FlxState
 			}
 			 _growtimer2.reset();
 		}
-		
+		*/
 		
 		FlxG.camera.follow(_player);
 		_hud.updateHUD(FlxMath.roundDecimal(_timer.timeLeft, 0), _score);
@@ -167,6 +167,8 @@ class PlayState extends FlxState
 			replace(g1Grow, grass_2);
 			g1Grow.kill();
 			grow1 = false;
+			members.remove(_hud);
+		    members.push(_hud);
 		}
 		if (grow2 == true){
 			grass_3= new Grass_3(g2Grow.x, g2Grow.y);
@@ -174,6 +176,8 @@ class PlayState extends FlxState
 			replace(g2Grow, grass_3);
 			g2Grow.kill();
 			grow2 = false;
+			members.remove(_hud);
+		    members.push(_hud);
 		}
 	}
 	 function onOverlap(_player:Player, grass_1:Grass_1 ):Void
