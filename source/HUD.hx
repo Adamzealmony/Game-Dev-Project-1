@@ -42,7 +42,9 @@
      {
          _txtTimer.text = "Time: " + Std.string(Timer);
          _txtScore.text = "Score: " + Std.string(Score);
-		 _txtReq.text = "Score Left: " + Std.string(_reqScore-Score);
+		 if (_reqScore-Score >= 0){
+			  _txtReq.text = "Score Left: " + Std.string(_reqScore-Score);
+		 }
 		 _txtScore.x = FlxG.camera.width - 10 - _txtScore.width;
 		 _txtReq.x = FlxG.camera.width/2 - _txtReq.width+10;
 
