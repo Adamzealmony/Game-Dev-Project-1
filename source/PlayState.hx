@@ -177,7 +177,8 @@ class PlayState extends FlxState
 		}
 	}
 	 function onOverlap(_player:Player, grass_1:Grass_1 ):Void
-	 {    if (_player._swing == true){
+	 {
+		 if (_player._swing == true){
 			//change number to whatever score is desired
 			grass1_array.remove(grass_1);
 		   grass_1.kill();
@@ -188,9 +189,8 @@ class PlayState extends FlxState
 	 {    if (_player._swing ==true){
 		 grass_1 = new Grass_1(grass_2.x, grass_2.y);
 		 grass1_array.push(grass_1);
-		 add(grass_1);
-		 grass2_array.remove(grass_2);
-		   grass_2.kill();
+		 replace(grass_2, grass_1);
+		 grass_2.kill();
 		   members.remove(_hud);
 		   members.push(_hud);
 		   	//change number to whatever score is desired, if we are spawning grass 1 in the same place then comment out the line below
@@ -204,9 +204,8 @@ class PlayState extends FlxState
 	 {    if (_player._swing == true){
 		 grass_2 = new Grass_2(grass_3.x, grass_3.y);
 		 grass2_array.push(grass_2);
-		 add(grass_2);
-		   grass_3.kill();
-		   grass3_array.remove(grass_3);
+		 replace(grass_3, grass_2);
+		 grass_3.kill();
 		   members.remove(_hud);
 		   members.push(_hud);
 		   //change number to whatever score is desired, if we are spawning grass 2 in the same place then comment out the line below
