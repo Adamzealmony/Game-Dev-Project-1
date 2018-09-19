@@ -1,0 +1,12 @@
+MAIN MENU:
+Recently some mutant fast growing grass was discovered in a local farmer's field. You've been sent to do some initial scouting and cleanup of this invasive grass.
+Left unchecked, this grass could grow over an entire town in a matter of days. Luckily, once it's cut down to the ground, it doesn't seem to grow back.
+
+Your mission is to clear out as much grass as possible before the second team arrives.
+
+END LEVEL 1:
+As the second team arrives, you get reports of more grass growing in a nearby forest. You decide to investigate this new area while the second team finishes up here.
+
+BEAT GAME:
+As you take a moment to wipe the sweat off your brow, you see the second team emerge into the clearing.
+They give you a pat on the back and send you back to base as they finish what you started.

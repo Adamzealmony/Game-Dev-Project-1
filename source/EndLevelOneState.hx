@@ -20,15 +20,19 @@ class EndLevelOneState extends FlxState
 	{
 		
 		if (_win){
-			_nextLevelButton  = new FlxButton(0, 0, "NextLevel", clickNextLevel);
-			_gameOverTxt = new FlxText(0, 2, 0, "You Beat The Level!", 24);
+			_nextLevelButton  = new FlxButton(0, 0, "Investigate", clickNextLevel);
+			_gameOverTxt = new FlxText(0, 0, 600, "As the second team arrives, you get reports of more grass growing in a nearby forest. You decide to investigate this new area while the second team finishes up here.", 24);
+			_gameOverTxt.screenCenter();
+			_gameOverTxt.y -= 150;
 			_nextLevelButton.screenCenter();
 			_nextLevelButton.y += 100;
 			add(_nextLevelButton);
 		}
 		else{
-			_playAgainButton  = new FlxButton(0, 0, "Play Again", clickPlayAgain);
-			_gameOverTxt = new FlxText(0, 2, 0, "You Lose.", 24);
+			_playAgainButton  = new FlxButton(0, 0, "Main Menu", clickPlayAgain);
+			_gameOverTxt = new FlxText(0, 0, 600, "You are too slow and the grass grows over your body and you can't move. By the time the second team arrives it is too late.", 24);
+			_gameOverTxt.screenCenter();
+			_gameOverTxt.y -= 150;
 			_playAgainButton.screenCenter();
 			_playAgainButton.y += 100;
 			add(_playAgainButton);

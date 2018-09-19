@@ -12,6 +12,7 @@ class MenuState extends FlxState
 	var _infoButton:FlxButton;
 	var _infoText:FlxText;
 	var _titleText:FlxText;
+	var _story:FlxText;
 	var _exitInfoButton:FlxButton;
 	
 	override public function create():Void
@@ -30,6 +31,9 @@ class MenuState extends FlxState
 		_titleText = new FlxText(0, 0, 0, "Grassanova", 24);
 		_titleText.screenCenter();
 		_titleText.y -= 100;
+		_story = new FlxText(0, 0, 600, "Recently some mutant fast growing grass was discovered in a local farmer's field. You've been sent to do some initial scouting and cleanup of this invasive grass. Left unchecked, this grass could grow over an entire town in a matter of days. Luckily, once it's cut down to the ground, it doesn't seem to grow back. Your mission is to clear out as much grass as possible before the second team arrives.", 16);
+		_story.screenCenter();
+		_story.y += 100;
 		_exitInfoButton = new FlxButton(0, 0, "Exit Info", exitInfo);
 		_exitInfoButton.screenCenter();
 		_exitInfoButton.y += 100;
@@ -37,6 +41,7 @@ class MenuState extends FlxState
 		add(_infoButton);
 		add(_exitInfoButton);
 		add(_titleText);
+		add(_story);
 		_exitInfoButton.visible = false;
 		super.create();
 	}
@@ -55,12 +60,14 @@ class MenuState extends FlxState
 	function clickInfo():Void{
 		_playButton.visible = false;
 		_infoButton.visible = false;
+		_story.visible = false;
 		_exitInfoButton.visible = true;
 	}
 	function exitInfo():Void{
 		_exitInfoButton.visible = false;
 		_playButton.visible = true;
 		_infoButton.visible = true;
+		_story.visible = true;
 	}
 	
 }

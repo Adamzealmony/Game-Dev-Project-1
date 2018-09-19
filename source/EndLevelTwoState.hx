@@ -8,7 +8,6 @@ import flixel.ui.FlxButton;
 class EndLevelTwoState extends FlxState
 {
 	var _playAgainButton:FlxButton;
-	var _nextLevelButton:FlxButton;
 	var _gameOverTxt:FlxText;
 	var _win:Bool = false;
 	public function new(Win:Bool){
@@ -19,16 +18,24 @@ class EndLevelTwoState extends FlxState
 	override public function create():Void
 	{
 		
-			_playAgainButton  = new FlxButton(0, 0, "Play Again", clickPlayAgain);
 		if (_win){
-			_gameOverTxt = new FlxText(0, 2, 0, "You Win!!", 24);
-		}
-		else{
-			_gameOverTxt = new FlxText(0, 2, 0, "You Lose.", 24);
-		}
+			_playAgainButton  = new FlxButton(0, 0, "Main Menu", clickPlayAgain);
+			_gameOverTxt = new FlxText(0, 0, 600, "As you take a moment to wipe the sweat off your brow, you see the second team emerge into the clearing. They give you a pat on the back and send you back to base as they finish what you started.", 24);
+			_gameOverTxt.screenCenter();
+			_gameOverTxt.y -= 150;
 			_playAgainButton.screenCenter();
 			_playAgainButton.y += 100;
 			add(_playAgainButton);
+		}
+		else{
+			_playAgainButton  = new FlxButton(0, 0, "Main Menu", clickPlayAgain);
+			_gameOverTxt = new FlxText(0, 0, 600, "You are too slow and the grass grows over your body and you can't move. By the time the second team arrives it is too late.", 24);
+			_gameOverTxt.screenCenter();
+			_gameOverTxt.y -= 150;
+			_playAgainButton.screenCenter();
+			_playAgainButton.y += 100;
+			add(_playAgainButton);
+		}
 		_gameOverTxt.screenCenter();
 		add(_gameOverTxt);
 		super.create();
