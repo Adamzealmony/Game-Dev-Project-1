@@ -43,7 +43,6 @@ class PlayState extends FlxState
 	//var _growtimer:FlxTimer;
 	//var _growtimer2:FlxTimer;
 	var _stamBar:FlxBar;
-	var cnt:Int = 0;
 	//change this variable below to whatever the required score is to win!!
 	var reqScore = 800;
 	
