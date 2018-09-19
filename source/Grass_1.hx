@@ -14,6 +14,7 @@ class Grass_1 extends FlxSprite
 
 	var _t:FlxTimer;
 	
+	
 	public function new(?X:Float=0, ?Y:Float=0)
 	{
 		super(X, Y);
@@ -27,6 +28,5 @@ class Grass_1 extends FlxSprite
 	{
 		PlayState.g1Grow = this;
 		PlayState.grow1 = true;
-	}
 	}
 }

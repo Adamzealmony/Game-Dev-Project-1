@@ -40,7 +40,10 @@ class PlayState extends FlxState
 	var _score:Int=0;
 	var _stamina:Int = 100;
 	var _timer:FlxTimer;
+	var _growtimer:FlxTimer;
+	var _growtimer2:FlxTimer;
 	var _stamBar:FlxBar;
+	var cnt:Int = 0;
 	
 	 
 	override public function create():Void
@@ -100,6 +103,16 @@ class PlayState extends FlxState
 		_timer.start();
 		//change .time to however long the player has
 		_timer.time = 100;
+		_growtimer = new FlxTimer();
+		_growtimer.time = 20;
+		//trace(_growtimer.timeLeft);
+		_growtimer.start(20);
+		//trace(_growtimer.timeLeft);
+		_growtimer2 = new FlxTimer();
+		_growtimer2.time = 40;
+		_growtimer2.start(40);
+		
+		
 		add(_hud);
 		super.create();
 	}
@@ -108,12 +121,41 @@ class PlayState extends FlxState
 	{   grass_1Col();
 		grass_2Col();
 		grass_3Col();
+		  //  trace(_growtimer.timeLeft);
 	 
 		 if (_timer.timeLeft <= .1){
 			gameOver();
 			FlxG.switchState(new EndLevelOneState(_win));
 			return;
 		}
+	  	if (_growtimer.timeLeft <=.1)
+		{  for ( grass in grass1_array)
+			{	     
+			grass1_array.remove(grass);
+			//trace(_growtimer.timeLeft);
+			grass.kill();
+		grass_2= new Grass_2(grass.x, grass.y);
+		grass2_array.push(grass_2);
+		add(grass_2);
+	      
+			}
+			_growtimer.reset();
+		}
+		if (_growtimer2.timeLeft <=0.1)
+		{  for ( grass in grass2_array)
+			{	   
+			grass2_array.remove(grass);
+			//trace(_growtimer2.timeLeft);
+			grass.kill();
+		grass_3= new Grass_3(grass.x, grass.y);
+		grass3_array.push(grass_3);
+		add(grass_3);
+	      
+			}
+			 _growtimer2.reset();
+		}
+		
+		
 		FlxG.camera.follow(_player);
 		_hud.updateHUD(FlxMath.roundDecimal(_timer.timeLeft, 0), _score);
 		super.update(elapsed);
@@ -137,6 +179,7 @@ class PlayState extends FlxState
 	 function onOverlap(_player:Player, grass_1:Grass_1 ):Void
 	 {    if (_player._swing == true){
 			//change number to whatever score is desired
+			grass1_array.remove(grass_1);
 		   grass_1.kill();
 		   _score+= 10;
 		}
@@ -146,6 +189,7 @@ class PlayState extends FlxState
 		 grass_1 = new Grass_1(grass_2.x, grass_2.y);
 		 grass1_array.push(grass_1);
 		 add(grass_1);
+		 grass2_array.remove(grass_2);
 		   grass_2.kill();
 		   members.remove(_hud);
 		   members.push(_hud);
@@ -162,6 +206,7 @@ class PlayState extends FlxState
 		 grass2_array.push(grass_2);
 		 add(grass_2);
 		   grass_3.kill();
+		   grass3_array.remove(grass_3);
 		   members.remove(_hud);
 		   members.push(_hud);
 		   //change number to whatever score is desired, if we are spawning grass 2 in the same place then comment out the line below
