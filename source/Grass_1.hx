@@ -20,7 +20,7 @@ class Grass_1 extends FlxSprite
 		super(X, Y);
 		_t = new FlxTimer();
 		_t.start();
-		_t.time = FlxG.random.float(5,20);
+		_t.time = FlxG.random.float(10,50);
 		loadGraphic("assets/tiled/grass_ht_1_s_sprite.png", true, 100, 100);
 	}
 	override public function update(elapsed:Float):Void{

@@ -67,20 +67,20 @@ class PlayState extends FlxState
 		
 		for (i in 0...200){
 			index = FlxG.random.int(0, grass_array.length - 1, exist_array);
-			type = FlxG.random.int(0, 2);
-			if (type == 0){
+			type = FlxG.random.int(0, 3);
+			if (type == 0 || type == 1){
 				grass_1 = new Grass_1(grass_array[index].x, grass_array[index].y);
 				exist_array.push(index);
 				grass1_array.push(grass_1);
 				add(grass_1);
 			}
-			else if (type == 1){
+			else if (type == 2){
 				grass_2 = new Grass_2(grass_array[index].x, grass_array[index].y);
 				exist_array.push(index);
 				grass2_array.push(grass_2);
 				add(grass_2);
 			}
-			else if (type == 2){
+			else if (type == 3){
 				grass_3 = new Grass_3(grass_array[index].x, grass_array[index].y);
 				exist_array.push(index);
 				grass3_array.push(grass_3);
