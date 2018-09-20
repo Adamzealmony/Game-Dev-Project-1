@@ -102,18 +102,24 @@ import flixel.system.FlxSound;
 		 _rush = FlxG.keys.anyPressed([SHIFT]);
 		 _swing = FlxG.keys.anyJustPressed([SPACE]);
 		 //cancel the effect of opposing input 
-		 if (_up && _down)
-		 _up = _down = false;
+		 if (_up && _down) 
+		 {_up = _down = false;
+		 _up2 = _down2 = false;}
 		 if (_up && _right)
-		 _up = _right = false;
+		 {_up = _right = false;
+		 _up2 = _right2 = false;}
 		 if (_up && _left)
-		 _up = _left = false;
+		{ _up = _left = false;
+		_up2 = _left2 = false;}
 		 if (_down && _left)
-		 _down = _left = false;
+		{ _down = _left = false;
+		_down2 = _left2 = false;}
 		 if (_down && _right)
-		 _down = _right = false;
+		{ _down = _right = false;
+		_down2 = _right2 = false;}
 		 if (_left && _right)
-		 _left = _right = false;
+		{ _left = _right = false;
+		_left2 = _right2 = false;}
 		 //if player is acturally moving 
 		 if (_up || _down || _left || _right)
 		 {
@@ -149,18 +155,18 @@ import flixel.system.FlxSound;
 		 //rotate that point around(0,0) by mA degrees
 		 //a weak FlxPoint is recycled once it is used in a haxeflixel function
 		 velocity.rotate(FlxPoint.weak(0, 0), mA);
-	
-		   if (_rush&&_canRush) 
+	   if (_rush&&_canRush) 
 		 {
 		 velocity.set(speed * 3, 0);
 		 velocity.rotate(FlxPoint.weak(0, 0), mA);
 		 _sndRush.play();
 		 
 		 }
-		
+	
 		 
 		 }
 	
+		
 		  if (_swing && (facing == FlxObject.UP))
 		  {
 	   
@@ -192,7 +198,7 @@ import flixel.system.FlxSound;
 		_sndSwing.play();
 		  }
 
-		  if (!_swing && _up2 ) 
+		  if (!_swing && _up ) 
 		  {
 			  
 			
@@ -207,7 +213,7 @@ import flixel.system.FlxSound;
 		  
 		  
 		  
-		    if (!_swing &&_down2 )
+		    if (!_swing &&_down )
 		  {
 			
 			     animation.play("WalkUD");  
@@ -216,7 +222,7 @@ import flixel.system.FlxSound;
 			   {
 				   animation.finish();
 			   }
-		   if (!_swing && _left2 )
+		   if (!_swing && _left )
 		  {
 			 
 			  animation.play("WalkLR");
@@ -225,7 +231,7 @@ import flixel.system.FlxSound;
 			   {
 				   animation.finish();
 			   }
-		    if (!_swing && _right2  )
+		    if (!_swing && _right  )
 		  {
 			  
 			  animation.play("WalkLR");
