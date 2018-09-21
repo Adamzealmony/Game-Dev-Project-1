@@ -171,7 +171,7 @@ class PlayState_2 extends FlxState
 	 }
 	public function gameOver():Void
 	{
-		if (_score >= 100){
+		if (_score >= 600){
 			_win = true;
 		}
 		else{
